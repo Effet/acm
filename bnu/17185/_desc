@@ -1,0 +1,23 @@
+Title:
+  几何
+
+From:
+  bnu/17185
+
+Source:
+  Others/2012/第十届北京师范大学程序设计竞赛（网络同步赛）/I
+
+Tags:
+  三角几何
+
+Description:
+三角形ABC,AB上点F,AC上点E,BE交CF于X,已知三角形BFX面积为a,
+BXC为b,CEX为c.
+求:四边行AFXE面积.
+
+Solution:
+连接AX交BC于D,设AFX面积为d1,AEX为d2,问题求解d1+d2.
+有三角形面积比知
+d1/a = (d2+c)/b
+d2/c = (d1+a)/b
+即可求得d1,d2.

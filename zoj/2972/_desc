@@ -1,0 +1,22 @@
+Title:
+  Hurdles of 110m
+
+From:
+  zoj/2972
+
+Source:
+  Others/2008/The 5th Zhejiang Provincial Collegiate Programming Contest/H
+
+Tags:
+  dp
+
+Description:
+跨栏跑步有n个阶段，每个阶段有3种模式:
+快速模式：消耗f1(i)能量，花费t1(i)时间
+普通模式：不消耗能量，花费t2(i)时间
+慢速模式：得到f2(i)能量，花费t3(i)时间
+初始能量为M，慢速模式获得能量不会超越M，能量不能低于0
+问：花费时间最小值.
+
+Solution:
+dp[i][j] 表示第i个阶段后剩余j能量所花费的最少时间．

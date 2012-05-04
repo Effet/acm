@@ -1,0 +1,24 @@
+Title:
+  Headquarters
+
+From:
+  code_forces/183A
+
+Source:
+  CodeForces/2012/Croc Champ 2012 - Final/A
+
+Tags:
+  combinatorics
+  组合数学
+  整体移动
+
+Description:
+初始位置是(0,0),一共n次移动,
+给定每次移动可能的方向,给的方向只可能是(UR,UL,DR,DL,ULDR).
+问n次移动后所在位置的可能性
+
+Solution:
+初始时为一个点，可以看成是一条长度为1的线 (假设正对角线为线的方向)
+而UR和DL对点的操作是等价的(线的根数不变，长度加一)
+同理DR的UL操作(线的根数加一,长度不变)
+ULDR则是以上两种操作的叠加(根数和长度同时加一)
