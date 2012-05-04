@@ -1,0 +1,15 @@
+
+# temp file or unaccepted problem
+*.swp
+*~
+
+[0-9a-zA-Z].cpp
+[0-9a-zA-Z]
+in
+out
+*.in
+*.out
+other
+other.cpp
+tmp
+tmp.cpp
