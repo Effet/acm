@@ -1,0 +1,23 @@
+next_permutation(str.begin(), str.end(), cmp);
+
+
+
+
+// ∞¥’’ A < a < B < b < C < c ... »´≈≈¡–
+bool cmp( const char& a, const char& b ) {
+   if ( tolower(a) == tolower(b) )
+      return a < b;
+   return tolower(a) < tolower(b);
+}
+
+int main() {
+   int t; cin>>t;
+   while ( t-- ) {
+      string str; cin >> str;
+      sort( str.begin(), str.end(), cmp );
+      do {
+         cout << str << endl;
+      } while ( next_permutation( str.begin(), str.end(), cmp ) );
+   }
+   return 0;
+}

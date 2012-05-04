@@ -1,0 +1,9 @@
+#include <iomanip>
+#include <iostream>
+using namespace std;
+
+int main (){
+   double n = 12.350922222222222222222;
+   cout<<setiosflags(ios::fixed)<<setprecision(2)<<n<<endl;
+   return 0;
+}

@@ -1,0 +1,61 @@
+typedef long long elem_t;
+elem_t exp_mod(elem_t a, elem_t n, elem_t b){
+	elem_t t;
+	if(n==0)
+		return 1%b;
+	if(n==1)
+		return a%b;
+	t = exp_mod(a, n/2, b);
+	t = t*t%b;
+	if((n&1)==1)
+		t = t*a%b;
+	return t;
+}
+
+//计算a^bmodn
+typedef long long elem_t;
+elem_t modexp(elem_t a, elem_t b, elem_t n){
+	elem_t ret = 1;
+	elem_t tmp = a;
+	while(b){
+		//基数存在
+		if(b&0x1)
+			ret = ret*tmp%n;
+		tmp = tmp*tmp%n;
+		b >>= 1;
+	}
+	return ret;
+}
+
+
+typedef long long LL;
+LL muti_mod(LL a,LL b,LL c){    //返回(a*b) mod c,a,b,c<2^63 
+    a%=c;
+    b%=c;
+    LL ret=0;
+    while (b){
+        if (b&1){
+            ret+=a;
+            if (ret>=c) ret-=c;
+        }
+        a<<=1;
+        if (a>=c) a-=c;
+        b>>=1;
+    }
+    return ret;
+}
+
+LL pow_mod(LL x,LL n,LL mod){  //返回x^n mod c ,非递归版 
+    if (n==1) return x%mod;
+    int bit[64],k=0;
+    while (n){
+        bit[k++]=n&1;
+        n>>=1;
+    }
+    LL ret=1;
+    for (k=k-1;k>=0;k--){
+        ret=muti_mod(ret,ret,mod);
+        if (bit[k]==1) ret=muti_mod(ret,x,mod);
+    }
+    return ret;
+}

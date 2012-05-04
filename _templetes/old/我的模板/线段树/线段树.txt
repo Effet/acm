@@ -1,0 +1,101 @@
+/*
+ ID:qcx97811
+ LANG:C
+ TASK:H
+ */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+/*还有一个修改没加*/
+typedef struct //线段树的结构体 
+{//l表示左端点 r右端点 max表示这一段的最大值 min表示这一段的最小值
+	int l, r;
+	int max, min;
+} Tree;
+Tree node[500006*4];//4倍
+void init_node(int idx, int _l, int _r){//初始化线段树
+	int mid;
+	node[idx].l = _l;//这里不管怎样都要赋值,确定边界
+	node[idx].r = _r;
+	if(_l==_r){//如果到了底层了直接返回
+		return;
+	}
+	mid = (_l+_r)>>1;
+	init_node(2*idx, _l, mid);//初始化左子树
+	init_node(2*idx+1, mid+1, _r);//初始化右子树
+}
+void insert(int idx, int _l, int _r, int val){//插入一个值
+	int mid;
+	if(_l<=node[idx].l&&_r>=node[idx].r){//如果区域覆盖这棵树就直接改变这棵树就行了 不改变子树的信息
+		node[idx].min = node[idx].max = val;
+		return;
+	}
+	if(_r<=node[2*idx].r){//插入左子树 
+		insert(2*idx, _l, _r, val);
+		//更新该区域的最大最小值
+		if(node[2*idx].max>node[idx].max)
+			node[idx].max = node[2*idx].max;
+		if(node[2*idx].min<node[idx].min)
+			node[idx].min = node[2*idx].min;
+	}else{
+		if(_l>=node[2*idx+1].l){//插入右子树
+			insert(2*idx+1, _l, _r, val);
+			//更新该区域的最大最小值
+			if(node[2*idx+1].max>node[idx].max)
+				node[idx].max = node[2*idx+1].max;
+			if(node[2*idx+1].min<node[idx].min)
+				node[idx].min = node[2*idx+1].min;
+		}else{
+			//插入左子树和右子树
+			insert(2*idx, _l, node[2*idx].r, val);
+			insert(2*idx+1, node[2*idx+1].l, _r, val);
+			//更新该区域的最大最小值
+			if(node[2*idx].max>node[idx].max)
+				node[idx].max = node[2*idx].max;
+			if(node[2*idx].min<node[idx].min)
+				node[idx].min = node[2*idx].min;
+			if(node[2*idx+1].max>node[idx].max)
+				node[idx].max = node[2*idx+1].max;
+			if(node[2*idx+1].min<node[idx].min)
+				node[idx].min = node[2*idx+1].min;
+		}
+	}
+}
+int query_max(int idx, int _l, int _r){//求_l到_r区间的最大值
+	int max, max1;
+	if(_l<=node[idx].l&&_r>=node[idx].r)//如果覆盖这个区域 直接返回
+		return node[idx].max;
+	if(_r<=node[2*idx].r){//返回左子树的最大值
+		return query_max(2*idx, _l, _r);
+	}else{
+		if(_l>=node[2*idx+1].l)//返回右子树的最大值
+			return query_max(2*idx+1, _l, _r);
+		//返回左子树和右子树中最大值的最大值
+		max = query_max(2*idx, _l, node[2*idx].r);
+		max1 = query_max(2*idx+1, node[2*idx+1].l, _r);
+		if(max>max1)
+			return max;
+		else
+			return max1;
+	}
+}
+int query_min(int idx, int _l, int _r){//类似上面的query_max
+	int min, min1;
+	if(_l<=node[idx].l&&_r>=node[idx].r)
+		return node[idx].min;
+	if(_r<=node[2*idx].r)
+		return query_min(2*idx, _l, _r);
+	else{
+		if(_l>=node[2*idx+1].l){
+			return query_min(2*idx+1, _l, _r);
+		}else{
+			min = query_min(2*idx, _l, node[2*idx].r);
+			min1 = query_min(2*idx+1, node[2*idx+1].l, _r);
+			if(min<min1)
+				return min;
+			else
+				return min1;
+		}
+	}
+}

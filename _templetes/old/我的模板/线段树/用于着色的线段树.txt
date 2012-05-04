@@ -1,0 +1,80 @@
+用于着色的线段树，颜色可以重复着，后着的颜色覆盖之前的。
+颜色编号从1开始，特别地，color[i]=0表示未着色，color[i]=-1表示该线段上颜色不一致
+class SegTree{
+	static const int UPBOUND = (110);UPBOUND需为2的幂，所有线段应在[0,UPBOUND)上
+	int segbg[(UPBOUND1)];
+	int segen[(UPBOUND1)];
+	int color[(UPBOUND1)];
+	int bj[(UPBOUND1)];
+	int a, b, x;
+
+	void mainTain(int i){
+		if(bj[i]){
+			color[i] = bj[i];
+			if(segen[i]-segbg[i]1){
+				bj[i2+1] = bj[i];
+				bj[i2+2] = bj[i];
+			}
+			bj[i] = 0;
+		}
+	}
+
+	void _makeSegTree(int i, int a, int b){
+		segbg[i] = a;
+		segen[i] = b;
+		if(a+1b){如果线段长度大于1
+			_makeSegTree(i2+1, a, a+(b-a)2);
+			_makeSegTree(i2+2, a+(b-a)2, b);
+		}
+	}
+
+	void _colorSeg(int i){
+		mainTain(i);
+		if(a=segbg[i]&&segen[i]=b){
+			bj[i] = x;
+		}else if(segen[i]-segbg[i]1){
+			color[i] = -1;-1表示这段的颜色不一致
+			if(asegbg[i]+(segen[i]-segbg[i])2){
+				_colorSeg(i2+1);
+			}
+			if(segbg[i]+(segen[i]-segbg[i])2=b){
+				_colorSeg(i2+2);
+			}
+		}
+	}
+
+	int _queryColor(int i, int n){
+		mainTain(i);
+		if(color[i]!=-1)
+			return color[i];
+		if(nsegbg[i]+(segen[i]-segbg[i])2){
+			return _queryColor(i2+1, n);
+		}else{
+			return _queryColor(i2+2, n);
+		}
+	}
+
+public
+	SegTree(){
+		clearColor();
+		makeSegTree(0, UPBOUND);
+	}
+	void makeSegTree(int a, int b){
+		_makeSegTree(0, a, b);
+	}
+	void clearColor(){
+		mset(color, 0);
+		mset(bj, 0);
+	}
+	为线段[a,b)着颜色x
+	void colorSeg(int a, int b, int x){
+		SegTreea = a;
+		SegTreeb = b;
+		SegTreex = x;
+		_colorSeg(0);
+	}
+	询问点n的颜色(即线段[n,n+1)上的颜色)
+	int queryColor(int n){
+		return _queryColor(0, n);
+	}
+} segTree;

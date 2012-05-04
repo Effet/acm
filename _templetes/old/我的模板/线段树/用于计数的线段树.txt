@@ -1,0 +1,79 @@
+//用于计数的线段树
+class SegTree{
+	static const int UPBOUND = (1<<17);//UPBOUND需为2的幂，所有线段应在[0,UPBOUND)上
+	int segbg[(UPBOUND<<1)];
+	int segen[(UPBOUND<<1)];
+	int cover[(UPBOUND<<1)];//覆盖次数
+	int a, b, x;
+
+	void _makeSegTree(int i, int a, int b){
+		segbg[i] = a;
+		segen[i] = b;
+		if(a+1<b){//如果线段长度大于1
+			_makeSegTree(i*2+1, a, a+(b-a)/2);
+			_makeSegTree(i*2+2, a+(b-a)/2, b);
+		}
+	}
+
+	void _insertSeg(int i){
+		if(a<=segbg[i]&&segen[i]<=b){
+			cover[i] += x;
+		}else if(segen[i]-segbg[i]>1){
+			if(a<segbg[i]+(segen[i]-segbg[i])/2){
+				_insertSeg(i*2+1);
+			}
+			if(segbg[i]+(segen[i]-segbg[i])/2<=b){
+				_insertSeg(i*2+2);
+			}
+		}
+	}
+
+	void _deleteSeg(int i){
+		if(a<=segbg[i]&&segen[i]<=b){
+			cover[i] -= x;
+		}else if(segen[i]-segbg[i]>1){
+			if(a<segbg[i]+(segen[i]-segbg[i])/2){
+				_deleteSeg(i*2+1);
+			}
+			if(segbg[i]+(segen[i]-segbg[i])/2<=b){
+				_deleteSeg(i*2+2);
+			}
+		}
+	}
+
+	int _queryCover(int i, int n){
+		if(n<segbg[i]+(segen[i]-segbg[i])/2){
+			return cover[i]+((segen[i]-segbg[i]>1) ? _queryCover(i*2+1, n) : 0);
+		}else{
+			return cover[i]+((segen[i]-segbg[i]>1) ? _queryCover(i*2+2, n) : 0);
+		}
+	}
+
+public:
+	SegTree(){
+		clearCover();
+		makeSegTree(0, UPBOUND);
+	}
+	void makeSegTree(int a, int b){
+		_makeSegTree(0, a, b);
+	}
+	void clearCover(){
+		mset(cover, 0);
+	}
+	//默认区间为[a,b)
+	void insertSeg(int a, int b, int x = 1){
+		SegTree::a = a;
+		SegTree::b = b;
+		SegTree::x = x;
+		_insertSeg(0);
+	}
+	void deleteSeg(int a, int b, int x = 1){
+		SegTree::a = a+1;
+		SegTree::b = b+1;
+		SegTree::x = x;
+		_deleteSeg(0);
+	}
+	int queryCover(int n){
+		return _queryCover(0, n);
+	}
+} segTree;

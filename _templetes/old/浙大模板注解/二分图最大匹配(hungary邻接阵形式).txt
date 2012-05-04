@@ -1,0 +1,56 @@
+#include <string.h>
+#define MAXN 310
+#define _clr(x) memset(x,0xff,sizeof(int)*MAXN)
+
+int hungary(int m, int n, int mat[][MAXN], int* match1, int* match2){
+	int s[MAXN];//s表示交错路中在x集合中的点
+	int t[MAXN];
+	int p;//
+	int q;//q表示一条交错路中x集合的点的个数
+	int ret = 0, i, j, k;
+	_clr(match1), _clr(match2);//清空匹配
+	for(i = 0; i<m; i++){
+		if(match1[i]<0)
+		{//i如果是未盖点
+			s[0] = i;//则交错路第一个点是从x集合中的i出发的
+			p = q = 0;//初始交错路
+			_clr(t);
+			for(; p<=q; p++)
+			{
+				if(match1[i]>=0)
+					break;//一旦找到增广路则i有所匹配，不是未盖点，循环结束
+
+				k = s[p];//k是x集合中第p个未盖点
+				for(j = 0; j<n; j++)
+				{//j为y集合中的点
+					if(match1[i]>=0)
+						break;//一旦找到增广路则i有所匹配，不是未盖点，循环结束
+
+					if(mat[k][j]&&t[j]<0)
+					{//k这个未盖点  到 j 有路 并且 j没有走过
+						s[++q] = match2[j], t[j] = k;//交错路加长，
+						//加长的点是是x集合中，和j匹配的点
+
+						if(s[q]<0)//如果没有和j匹配的点
+						{//则j是未盖点则交错路为可增广路，匹配增大
+							for(p = j; p>=0;)
+							{//相当于回溯
+								k = t[j];//k为从增广路走到j的点(x集合中)
+								//将j与k匹配
+								match2[j] = k;
+								//p为临时量保存曾经和k匹配的点(在增广路中较k之前的点)
+								p = match1[k];
+								match1[k]=j;
+								j = p;//就是将match1[k]与j交换位置，
+								//将继续寻找增广路中之前点的状态转移到前面
+							}
+						}
+					}
+				}
+			}
+		}
+		if(match1[i]>0)
+			ret++;
+	}
+	return ret;
+}

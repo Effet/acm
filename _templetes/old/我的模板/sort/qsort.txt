@@ -1,0 +1,127 @@
+qsort包含在<stdlib.h>头文件中，此函数根据你给的比较条件进行快速排序，通过指针移动实现排序。排序之后的结果仍然放在原数组中。使用qsort函数必须自己写一个比较函数。
+
+函数原型：
+
+void qsort( void * base, size_t num, size_t size, int ( * comparator ) ( const void *, const void * ) );
+
+用法以及参数说明：
+
+Sorts the num elements of the array pointed by base, each element size bytes long, using the comparator function to determine the order.
+
+The sorting algorithm used by this function compares pairs of values by calling the specified comparator function with two pointers to elements of the array.
+
+The function does not return any value, but modifies the content of the array pointed by base reordering its elements to the newly sorted order.
+
+   base Pointer to the first element of the array to be sorted.(数组起始地址)
+   num Number of elements in the array pointed by base.(数组元素个数)
+   size Size in bytes of each element in the array.(每一个元素的大小)
+comparator Function that compares two elements.(函数指针，指向比较函数)
+   1、The function must accept two parameters that are pointers to elements, type-casted as void*. These parameters should be cast back to some data type and be compared.
+   2、The return value of this function should represent whether elem1 is considered less than, equal to, or greater than elem2 by returning, respectively, a negative value, zero or a positive value.
+Return Value none (无返回值)
+
+   一、对int类型数组排序
+
+   int num[100];
+
+   int cmp(const void *a, const void *b){
+      return *(int *)a - *(int *)b;
+   }
+
+qsort(num,100,sizeof(num[0]),cmp);
+
+二、对char类型数组排序（同int类型）
+
+char word[100];
+
+int cmp( const void *a , const void *b )
+{
+   return *(char *)a - *(int *)b;
+}
+
+qsort(word,100,sizeof(word[0]),cmp);
+
+三、对double类型数组排序
+
+double in[100];
+
+int cmp( const void *a , const void *b )
+{
+   return *(double *)a > *(double *)b ? 1 : -1;
+}
+
+qsort(in,100,sizeof(in[0]),cmp);
+
+四、对结构体一级排序
+
+struct Sample{
+   double data;
+   int other;
+}s[100];
+
+//按照data的值从小到大将结构体排序
+
+int cmp(const void *a ,const void *b){
+   return (*(Sample *)a).data > (*(Sample *)b).data ? 1 : -1;
+}
+
+qsort(s,100,sizeof(s[0]),cmp);
+
+五、对结构体二级排序
+
+struct Sample
+{
+   int x;
+   int y;
+}s[100];
+
+//按照x从小到大排序，当x相等时按照y从大到小排序
+
+int cmp( const void *a , const void *b )
+{
+   struct Sample *c = (Sample *)a;
+   struct Sample *d = (Sample *)b;
+   if(c->x != d->x) return c->x - d->x;
+   else return d->y - c->y;
+}
+
+qsort(s,100,sizeof(s[0]),cmp);
+
+六、对字符串进行排序
+
+struct Sample
+{
+   int data;
+   char str[100];
+}s[100];
+
+//按照结构体中字符串str的字典顺序排序
+
+int cmp ( const void *a , const void *b )
+{
+   return strcmp( (*(Sample *)a)->str , (*(Sample *)b)->str );
+}
+
+qsort(s,100,sizeof(s[0]),cmp);
+
+附加一个完整点的代码，对字符串二维数组排序：
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char s[2001][1001];
+
+int cmp(const void *a, const void *b){
+   return strcmp((char *)a,(char *)b);
+}
+
+int main(){
+   int i,n;
+   scanf("%d",&n);
+   getchar();
+   for(i=0;i<n;i++) gets(s[i]);
+   qsort(s,n,1001*sizeof(char),cmp);
+   for(i=0;i<n;i++) puts(s[i]);
+   return 0;
+}
