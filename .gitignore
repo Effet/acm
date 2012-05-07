@@ -1,10 +1,10 @@
 
 # temp file or unaccepted problem
 *.swp
-*~
+#*~
 
 [0-9a-zA-Z].cpp
-[0-9a-zA-Z]
+a
 in
 out
 *.in
