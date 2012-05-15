@@ -1,0 +1,21 @@
+Title:
+  Number Theory?
+
+From:
+  hdu/4215
+
+Source:
+  Others/2012/首届华中区程序设计邀请赛暨第十届武汉大学程序设计大赛（预赛）/A
+
+Tags:
+  暴力
+  阶
+  增长
+
+Description:
+phi(n), d(n) [欧拉函数，因子个数函数]
+求：满足 sum\limits_{i=l}^r phi(i) = sum\limits_{i=l}^r d(i)
+l,r的对数。
+
+Solution:
+l很大时（l>=30）phi(n)已经远大于d(n)。故只需暴力n<=30的解即可。

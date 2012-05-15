@@ -1,0 +1,31 @@
+Title:
+  PROBLEM_NAME
+  eg. MAGRID
+
+From:
+  OJ_NAME/PROBLEM_ID
+  eg. uva_live/5983
+
+Source:
+  CONTEST_TYPE/YEAR/WHERE/PROBLEM_LABEL
+  eg. Regionals/2011/Asia - Amritapuri/A
+
+Tags:
+  LIST_TAGS_ONE_PER_LINE
+  eg.
+  二分
+  二分枚举
+  dp
+
+Description:
+DESC_OF_PROBLEM
+eg.
+起点为(1,1)要走到(R,C),矩阵S[][],若S[i][j]为正，表示走到这个点获得的能量；
+为负则表示，走到这个点失去的能量，每次移动只能向下或向右，并且每次移动时，一旦能量<=0则死亡．
+问：初始时最少多少能量能够保证从起点走到终点．
+
+Solution:
+SOLVE_WAY_OF_PROBLEM
+eg.
+二分枚举答案，每次枚举dp判断是否可行．
+也可逆向dp(假设最优时，到终点刚好为1能量),若到某个点会死亡(dp[i][j] <= 0)则把dp[i][j] = 1.

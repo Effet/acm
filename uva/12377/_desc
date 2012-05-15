@@ -1,0 +1,22 @@
+Title:
+  Number Coding
+
+From:
+  uva/12377
+
+Source:
+  Others/2011/Shiraz University Local Contest/A
+
+Tags:
+  模拟
+  递归
+  迭代
+  组合数学
+
+Description:
+一种数的表示法：n=p1^k1*p2^k2...pm^km可用串S=m(sort_inc(k1,k2,..km))
+如43560=2^3*3^2*5^1*11^2表示为41223
+问：对于一输入S，有多少n与其对应（n最大的素因子为23）
+
+Solution:
+枚举S所代表的所有情况，组合数学求解种类数
