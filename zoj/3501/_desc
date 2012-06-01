@@ -1,0 +1,17 @@
+Title:
+  Roman Order
+
+From:
+  zoj/3501
+
+Source:
+  Others/2011/ZOJ Monthly, May 2011/B
+
+Tags:
+  模拟
+
+Description:
+NONE
+
+Solution:
+将数字转化为罗马数，并按字典序排序。
