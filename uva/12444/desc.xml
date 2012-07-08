@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Bits and Pieces</title>
+
+  <description>
+    <![CDATA[
+             已知C=A&B, D=A|B, 求B-A最小时满足的A和B.
+    ]]>
+  </description>
+
+  <source>
+    <judge>uva/12444</judge>
+    <contest>Others/2011/Alberta Collegiate Programming Contest 2011/A</contest>
+  </source>
+
+  <tags>
+    <tag>位运算</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               首先,当且仅当C&~D时,不存在A,B.
+               从高位到低位,(C为1,D为1则A,B各一),(C为0,D为0则A,B都为0)
+               第一次出现(C为0,D为1,则A为0,B为1,其余都是A为1,B为0)
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

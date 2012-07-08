@@ -1,0 +1,25 @@
+Title:
+  Binomial coefficients
+
+From:
+  uva_live/5900
+
+Source:
+  Regionals/2011/Europe - Northwestern/A
+
+Tags:
+  枚举
+  推导
+  组合数学
+
+Description:
+m=n!/(k!*(n-k)!)
+知m，求所有可能的(n,k)
+
+Solution:
+m = (n-k+1)*...*n/k!
+m*k! = (n-k+1)*...*n
+
+那么 n-k+1 <= (m*k!)^(1/k) <= n
+枚举k:O(k)，对每次枚举再枚举n:O(k)，从复杂度O(k^2)
+由于m=C(n,k)，2<=m<=10^15 k最大为25

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Pieces and Bits</title>
+
+  <description>
+    <![CDATA[
+             生成0 ~ (1<<n)-1的序列。使得相邻两个数字位数有且只有一位相同。
+    ]]>
+  </description>
+
+  <source>
+    <judge>uva/12447</judge>
+    <contest>Others/2011/Alberta Collegiate Programming Contest 2011/D</contest>
+  </source>
+
+  <tags>
+    <tag>gray code</tag>
+    <tag>位运算</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               首先生成格雷码，将第偶数个格雷码取反即可。
+      ]]>
+    </solution>
+    <solution type="1">
+      <![CDATA[
+               直接暴力。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

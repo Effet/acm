@@ -1,0 +1,23 @@
+Title:
+  Bird tree
+
+From:
+  uva_live/5901
+
+Source:
+  Regionals/2011/Europe - Northwestern/B
+
+Tags:
+  递归
+  递归式
+  推导
+
+Description:
+树bird表述为其根节点为1/1，左子树：1/(bird+1)，右子树：1/bird+1
+其中bird+1为子树中所有元素加1，1/bird为子树中所有元素都份子分母互换。
+Bird Tree定义见Hinze论文。
+求：对于给定的a/b，输出其在树中的位置（从根节点走到a/b的路径）
+
+Solution:
+由定义见，Bird Tree为递归定义的无限树。从递归定义出发，左子树为根节点：分母/(分母+分子)，右子树为：(分母+分子)/分子
+可知，左子树分母>分子，右子树分母<分子。故可以返递归（由已知子树推到原树，并递归地得到路径）求解，具体看代码。

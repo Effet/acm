@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>How Many... in 3D!</title>
+
+  <description>
+    <![CDATA[
+             2x2xN的盒子放1x1x2的木条,问有几种放法.
+    ]]>
+  </description>
+
+  <source>
+    <judge>uva/12446</judge>
+    <contest>Others/2011/Alberta Collegiate Programming Contest 2011/C</contest>
+  </source>
+
+  <tags>
+    <tag>dp</tag>
+    <tag>递推</tag>
+    <tag>推导</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               可知 (0,0   (1,0
+               0,1),  0,1) 形状的状态都是不可能出现的,
+               只剩下(0,0   (0,0
+               1,1),  0,0), 又前者可以由后者推得.
+               故可用1维函数表述.
+               知:f(x) = f(x-1)*2 + f(x-2)*5 + f(x-3)*4 + ..*4 + ..*4 + ...
+               则推导出f(x) = f(x-1)*3 + f(x-2)*3 - f(x-3).
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

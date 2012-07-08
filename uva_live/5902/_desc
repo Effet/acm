@@ -1,0 +1,20 @@
+Title:
+  Movie collection
+
+From:
+  uva_live/5902
+
+Source:
+  Regionals/2011/Europe - Northwestern/C
+
+Tags:
+  树状数组
+
+Description:
+一个栈，n个元素，m次查询，
+每次查询输出第n个元素在栈中的位置，然后将其转移到栈顶。
+
+Solution:
+用a[]数组模拟堆栈，并用令id[]数组纪录每个元素在a[]中的位置，
+查询复杂度为O(1)修改复杂度最坏为O(n)，
+用树状数组则可以优化至O(log(n))，具体看代码。

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Casino Advantage</title>
+
+  <description>
+    <![CDATA[
+             n个盒子，m个小球；每个小球独立，进入n个盒子的概率都相同。
+             问：n个盒子中，k个盒子有进过求的概率是多少？（一个盒子可以进任意多个球）
+    ]]>
+  </description>
+
+  <source>
+    <judge>uva/12448</judge>
+    <contest>Others/2011/Alberta Collegiate Programming Contest 2011/E</contest>
+  </source>
+
+  <tags>
+    <tag>组合数学</tag>
+    <tag>dp</tag>
+    <tag>状态压缩</tag>
+  </tags>
+
+  <solutions>
+    <solution type="组合数学">
+      <![CDATA[
+               首先应知：盒子与小球均可区分。
+               问题可以转化为：
+               n中任取k个盒子，m个小球分别进入这k个盒子，且不允许空盒。
+               由于此时`盒子与小球均可区分，且不允许空盒'，方案总数则为S(m,k)*k!，其中S为Sterling函数。
+               再乘以取盒子和方案数，则原问题的方案数为C(n,k)*S(m,k)*k!。
+               又，方案总数为n^m。
+      ]]>
+    </solution>
+    <solution type="dp">
+      <![CDATA[
+               dp[i][state] 表示为丢了i个球后，盒子是否进过的状态为state时，方案的个数。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>
