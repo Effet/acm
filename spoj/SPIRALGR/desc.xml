@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>A Famous Grid</title>
+
+  <description>
+    <![CDATA[
+             蛇形矩阵中素数是不能走的点，问从x走到y的最短路程。
+    ]]>
+  </description>
+
+  <source>
+    <judge>spoj/SPIRALGR</judge>
+    <contest>Others/2012/Fudan University Local Contest 2012/K</contest>
+  </source>
+
+  <tags>
+    <tag>蛇形矩阵</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               建图后，bfs搜索即可。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

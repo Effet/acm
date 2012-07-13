@@ -20,12 +20,12 @@
   </tags>
 
   <solutions>
-    <solution type="0">
+    <solution type="gray code">
       <![CDATA[
                首先生成格雷码，将第偶数个格雷码取反即可。
       ]]>
     </solution>
-    <solution type="1">
+    <solution type="暴力">
       <![CDATA[
                直接暴力。
       ]]>

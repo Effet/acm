@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>A Famous Game</title>
+
+  <description>
+    <![CDATA[
+             袋中有n个球，其中有红球与蓝球，红球为(0,1,2...n)个的概率均相同。
+             现在从袋中取出p个球，其中有q个球是红球。问：取第p+1个球，其为红球的概率。
+    ]]>
+  </description>
+
+  <source>
+    <judge>spoj/PRLGAME2</judge>
+    <contest>Others/2012/Fudan University Local Contest 2012/J</contest>
+  </source>
+
+  <tags>
+    <tag>概率</tag>
+    <tag>条件概率</tag>
+    <tag>bayes公式</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               事件A：取了p个球，其中有q个球为红球；事件B：取第p+1个球，为红球。
+               问题即求P(B|A)。
+               设有i个红球，
+               Pi(A) = C(i,q)*C(n-i,p-q)/C(n,p),  Pi(B) = (i-q)/(n-p).
+               P(B|A) = P(B交A)/P(A) = sum(Pi(B)*Pi(A))/sum(Pi(A))
+               http://endlesscount.blog.163.com/blog/static/8211978720125148427325/
+               http://hi.baidu.com/%D6%D0%B9%FA%C4%D4%BD%EE/blog/item/df30a051a0422a42853524cf.html
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>A Famous City</title>
+
+  <description>
+    <![CDATA[
+             一数组表示建筑物群的形状，如[1,2,1]。问这个数组表示的建筑物群最少有几个建筑物（所有建筑物都是矩形）。
+             其中[1,2,1]最少可以表示为2个建筑物。
+    ]]>
+  </description>
+
+  <source>
+    <judge>spoj/CITY2</judge>
+    <contest>Others/2012/Fudan University Local Contest 2012/H</contest>
+  </source>
+
+  <tags>
+    <tag>贪心</tag>
+    <tag>堆栈</tag>
+    <tag>进一次出一次原则</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               攀高的位置至少需要表示为一个建筑物。而降低的位置如果与之前某位置相同高度且之间没有断隔，那么可与之间的位置合并为一个。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

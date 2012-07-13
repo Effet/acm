@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>The Famous ICPC Team Again</title>
+
+  <description>
+    <![CDATA[
+             一数组，区间查询中位数。
+    ]]>
+  </description>
+
+  <source>
+    <judge>spoj/MEDIAN3</judge>
+    <contest>Others/2012/Fudan University Local Contest 2012/G</contest>
+  </source>
+
+  <tags>
+    <tag>划分树</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               划分树套用即可。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>
