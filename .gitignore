@@ -13,3 +13,7 @@ other
 other.cpp
 tmp
 tmp.cpp
+*.aux
+*.log
+*.pdf
+*.toc
