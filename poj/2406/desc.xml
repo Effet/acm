@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Power Strings</title>
+
+  <description>
+    <![CDATA[
+             字符串循环节。
+    ]]>
+  </description>
+
+  <source>
+    <judge>poj/2406</judge>
+    <contest>NONE</contest>
+  </source>
+
+  <tags>
+    <tag>KMP</tag>
+    <tag>字符串循环表示</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               略。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

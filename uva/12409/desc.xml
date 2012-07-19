@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Kisu Pari Na – 1</title>
+
+  <description>
+    <![CDATA[
+             略。
+    ]]>
+  </description>
+
+  <source>
+    <judge>uva/12409</judge>
+    <contest>Others/2012/An easy Bangladeshi Contest/G</contest>
+  </source>
+
+  <tags>
+    <tag>博弈</tag>
+    <tag>阶梯博弈</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               略。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

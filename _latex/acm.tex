@@ -1,18 +1,22 @@
-\documentclass[a4paper 11pt]{article}
+\documentclass[a4paper, hidelinks, 12pt]{article}
 \usepackage{enumerate}
-\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}
 \usepackage{tikz}
 \usepackage{url}
 \usepackage{hyperref}
-\title{Formulas Collection for ACM/ICPC in NIT}
-\date{July 13, 2012}
-\author{n4k0master}
+\usepackage{cite}
+\usepackage{listings}           % source code
+
 \begin{document}
-\maketitle
-\newpage
+
+\include{title}
+
 \tableofcontents
 \newpage
 
 \include{combination}
+
+\bibliographystyle{plain}
+\bibliography{acm}
 
 \end{document}

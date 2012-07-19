@@ -13,7 +13,12 @@ other
 other.cpp
 tmp
 tmp.cpp
+
+# latex
 *.aux
 *.log
 *.pdf
 *.toc
+*.bbl
+*.blg
+*.brf

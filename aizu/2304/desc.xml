@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Reverse Roads</title>
+
+  <description>
+    <![CDATA[
+             略。
+    ]]>
+  </description>
+
+  <source>
+    <judge>aizu/2304</judge>
+    <contest>Others/2011/Japan Alumni Group Summer Camp 2011 Day 3/E</contest>
+  </source>
+
+  <tags>
+    <tag>flow</tag>
+    <tag>网络流</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               模板题。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>
