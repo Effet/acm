@@ -1,7 +1,7 @@
-ÓÃÓÚ×ÅÉ«µÄÏß¶ÎÊ÷£¬ÑÕÉ«¿ÉÒÔÖØ¸´×Å£¬ºó×ÅµÄÑÕÉ«¸²¸ÇÖ®Ç°µÄ¡£
-ÑÕÉ«±àºÅ´Ó1¿ªÊ¼£¬ÌØ±ğµØ£¬color[i]=0±íÊ¾Î´×ÅÉ«£¬color[i]=-1±íÊ¾¸ÃÏß¶ÎÉÏÑÕÉ«²»Ò»ÖÂ
+ç”¨äºç€è‰²çš„çº¿æ®µæ ‘ï¼Œé¢œè‰²å¯ä»¥é‡å¤ç€ï¼Œåç€çš„é¢œè‰²è¦†ç›–ä¹‹å‰çš„ã€‚
+é¢œè‰²ç¼–å·ä»1å¼€å§‹ï¼Œç‰¹åˆ«åœ°ï¼Œcolor[i]=0è¡¨ç¤ºæœªç€è‰²ï¼Œcolor[i]=-1è¡¨ç¤ºè¯¥çº¿æ®µä¸Šé¢œè‰²ä¸ä¸€è‡´
 class SegTree{
-	static const int UPBOUND = (110);UPBOUNDĞèÎª2µÄÃİ£¬ËùÓĞÏß¶ÎÓ¦ÔÚ[0,UPBOUND)ÉÏ
+	static const int UPBOUND = (110);UPBOUNDéœ€ä¸º2çš„å¹‚ï¼Œæ‰€æœ‰çº¿æ®µåº”åœ¨[0,UPBOUND)ä¸Š
 	int segbg[(UPBOUND1)];
 	int segen[(UPBOUND1)];
 	int color[(UPBOUND1)];
@@ -22,7 +22,7 @@ class SegTree{
 	void _makeSegTree(int i, int a, int b){
 		segbg[i] = a;
 		segen[i] = b;
-		if(a+1b){Èç¹ûÏß¶Î³¤¶È´óÓÚ1
+		if(a+1b){å¦‚æœçº¿æ®µé•¿åº¦å¤§äº1
 			_makeSegTree(i2+1, a, a+(b-a)2);
 			_makeSegTree(i2+2, a+(b-a)2, b);
 		}
@@ -33,7 +33,7 @@ class SegTree{
 		if(a=segbg[i]&&segen[i]=b){
 			bj[i] = x;
 		}else if(segen[i]-segbg[i]1){
-			color[i] = -1;-1±íÊ¾Õâ¶ÎµÄÑÕÉ«²»Ò»ÖÂ
+			color[i] = -1;-1è¡¨ç¤ºè¿™æ®µçš„é¢œè‰²ä¸ä¸€è‡´
 			if(asegbg[i]+(segen[i]-segbg[i])2){
 				_colorSeg(i2+1);
 			}
@@ -66,14 +66,14 @@ public
 		mset(color, 0);
 		mset(bj, 0);
 	}
-	ÎªÏß¶Î[a,b)×ÅÑÕÉ«x
+	ä¸ºçº¿æ®µ[a,b)ç€é¢œè‰²x
 	void colorSeg(int a, int b, int x){
 		SegTreea = a;
 		SegTreeb = b;
 		SegTreex = x;
 		_colorSeg(0);
 	}
-	Ñ¯ÎÊµãnµÄÑÕÉ«(¼´Ïß¶Î[n,n+1)ÉÏµÄÑÕÉ«)
+	è¯¢é—®ç‚¹nçš„é¢œè‰²(å³çº¿æ®µ[n,n+1)ä¸Šçš„é¢œè‰²)
 	int queryColor(int n){
 		return _queryColor(0, n);
 	}

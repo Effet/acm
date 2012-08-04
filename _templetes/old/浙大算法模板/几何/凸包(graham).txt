@@ -1,15 +1,15 @@
 // CONVEX HULL I
-// modified by rr ²»ÄÜÈ¥µôµã¼¯ÖĞÖØºÏµÄµã
+// modified by rr ä¸èƒ½å»æ‰ç‚¹é›†ä¸­é‡åˆçš„ç‚¹
 #include <stdlib.h>
 #define eps 1e-8
 #define zero(x) (((x)>0?(x):-(x))<eps)
 struct point{double x,y;};
 
-//¼ÆËãcross product (P1-P0)x(P2-P0)
+//è®¡ç®—cross product (P1-P0)x(P2-P0)
 double xmult(point p1,point p2,point p0){
 	return (p1.x-p0.x)*(p2.y-p0.y)-(p2.x-p0.x)*(p1.y-p0.y);
 }
-//grahamËã·¨Ë³Ê±Õë¹¹Ôì°üº¬ËùÓĞ¹²ÏßµãµÄÍ¹°ü,O(nlogn)
+//grahamç®—æ³•é¡ºæ—¶é’ˆæ„é€ åŒ…å«æ‰€æœ‰å…±çº¿ç‚¹çš„å‡¸åŒ…,O(nlogn)
 point p1,p2;
 int graham_cp(const void* a,const void* b){
 	double ret=xmult(*((point*)a),*((point*)b),p1);
@@ -27,12 +27,12 @@ void _graham(int n,point* p,int& s,point* ch){
 		for (;s>2&&xmult(ch[s-2],p[i],ch[s-1])<-eps;s--);
 }
 
-//¹¹ÔìÍ¹°ü½Ó¿Úº¯Êı,´«ÈëÔ­Ê¼µã¼¯´óĞ¡n,µã¼¯p(pÔ­ÓĞË³Ğò±»´òÂÒ!)
-//·µ»ØÍ¹°ü´óĞ¡,Í¹°üµÄµãÔÚconvexÖĞ
-//²ÎÊımaxsizeÎª1°üº¬¹²Ïßµã,Îª0²»°üº¬¹²Ïßµã,È±Ê¡Îª1
-//²ÎÊıclockwiseÎª1Ë³Ê±Õë¹¹Ôì,Îª0ÄæÊ±Õë¹¹Ôì,È±Ê¡Îª1
-//ÔÚÊäÈë½öÓĞÈô¸É¹²ÏßµãÊ±Ëã·¨²»ÎÈ¶¨,¿ÉÄÜÓĞ´ËÀàÇé¿öÇëÁíĞĞ´¦Àí!
-//²»ÄÜÈ¥µôµã¼¯ÖĞÖØºÏµÄµã
+//æ„é€ å‡¸åŒ…æ¥å£å‡½æ•°,ä¼ å…¥åŸå§‹ç‚¹é›†å¤§å°n,ç‚¹é›†p(påŸæœ‰é¡ºåºè¢«æ‰“ä¹±!)
+//è¿”å›å‡¸åŒ…å¤§å°,å‡¸åŒ…çš„ç‚¹åœ¨convexä¸­
+//å‚æ•°maxsizeä¸º1åŒ…å«å…±çº¿ç‚¹,ä¸º0ä¸åŒ…å«å…±çº¿ç‚¹,ç¼ºçœä¸º1
+//å‚æ•°clockwiseä¸º1é¡ºæ—¶é’ˆæ„é€ ,ä¸º0é€†æ—¶é’ˆæ„é€ ,ç¼ºçœä¸º1
+//åœ¨è¾“å…¥ä»…æœ‰è‹¥å¹²å…±çº¿ç‚¹æ—¶ç®—æ³•ä¸ç¨³å®š,å¯èƒ½æœ‰æ­¤ç±»æƒ…å†µè¯·å¦è¡Œå¤„ç†!
+//ä¸èƒ½å»æ‰ç‚¹é›†ä¸­é‡åˆçš„ç‚¹
 int graham(int n,point* p,point* convex,int maxsize=1,int dir=1){
 	point* temp=new point[n];
 	int s,i;
@@ -45,17 +45,17 @@ int graham(int n,point* p,point* convex,int maxsize=1,int dir=1){
 }
 
 // CONVEX HULL II
-// modified by mgmg È¥µôµã¼¯ÖĞÖØºÏµÄµã
+// modified by mgmg å»æ‰ç‚¹é›†ä¸­é‡åˆçš„ç‚¹
 
 #define eps 1e-8
 #define zero(x) (((x)>0?(x):-(x))<eps)
 struct point{double x,y;};
 
-//¼ÆËãcross product (P1-P0)x(P2-P0)
+//è®¡ç®—cross product (P1-P0)x(P2-P0)
 double xmult(point p1,point p2,point p0){
     return (p1.x-p0.x)*(p2.y-p0.y)-(p2.x-p0.x)*(p1.y-p0.y);
 }
-//grahamËã·¨Ë³Ê±Õë¹¹Ôì°üº¬ËùÓĞ¹²ÏßµãµÄÍ¹°ü,O(nlogn)
+//grahamç®—æ³•é¡ºæ—¶é’ˆæ„é€ åŒ…å«æ‰€æœ‰å…±çº¿ç‚¹çš„å‡¸åŒ…,O(nlogn)
 point p1,p2;
 int graham_cp(const void* a,const void* b){
     double ret=xmult(*((point*)a),*((point*)b),p1);
@@ -91,11 +91,11 @@ int _wipesame(point * p, int n)
     return k;
 }
 
-//¹¹ÔìÍ¹°ü½Ó¿Úº¯Êı,´«ÈëÔ­Ê¼µã¼¯´óĞ¡n,µã¼¯p(pÔ­ÓĞË³Ğò±»´òÂÒ!)
-//·µ»ØÍ¹°ü´óĞ¡,Í¹°üµÄµãÔÚconvexÖĞ
-//²ÎÊımaxsizeÎª1°üº¬¹²Ïßµã,Îª0²»°üº¬¹²Ïßµã,È±Ê¡Îª1
-//²ÎÊıclockwiseÎª1Ë³Ê±Õë¹¹Ôì,Îª0ÄæÊ±Õë¹¹Ôì,È±Ê¡Îª1
-//ÔÚÊäÈë½öÓĞÈô¸É¹²ÏßµãÊ±Ëã·¨²»ÎÈ¶¨,¿ÉÄÜÓĞ´ËÀàÇé¿öÇëÁíĞĞ´¦Àí!
+//æ„é€ å‡¸åŒ…æ¥å£å‡½æ•°,ä¼ å…¥åŸå§‹ç‚¹é›†å¤§å°n,ç‚¹é›†p(påŸæœ‰é¡ºåºè¢«æ‰“ä¹±!)
+//è¿”å›å‡¸åŒ…å¤§å°,å‡¸åŒ…çš„ç‚¹åœ¨convexä¸­
+//å‚æ•°maxsizeä¸º1åŒ…å«å…±çº¿ç‚¹,ä¸º0ä¸åŒ…å«å…±çº¿ç‚¹,ç¼ºçœä¸º1
+//å‚æ•°clockwiseä¸º1é¡ºæ—¶é’ˆæ„é€ ,ä¸º0é€†æ—¶é’ˆæ„é€ ,ç¼ºçœä¸º1
+//åœ¨è¾“å…¥ä»…æœ‰è‹¥å¹²å…±çº¿ç‚¹æ—¶ç®—æ³•ä¸ç¨³å®š,å¯èƒ½æœ‰æ­¤ç±»æƒ…å†µè¯·å¦è¡Œå¤„ç†!
 int graham(int n,point* p,point* convex,int maxsize=1,int dir=1){
     point* temp=new point[n];
     int s,i;

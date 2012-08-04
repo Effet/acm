@@ -1,10 +1,10 @@
-qsort°üº¬ÔÚ<stdlib.h>Í·ÎÄ¼şÖĞ£¬´Ëº¯Êı¸ù¾İÄã¸øµÄ±È½ÏÌõ¼ş½øĞĞ¿ìËÙÅÅĞò£¬Í¨¹ıÖ¸ÕëÒÆ¶¯ÊµÏÖÅÅĞò¡£ÅÅĞòÖ®ºóµÄ½á¹ûÈÔÈ»·ÅÔÚÔ­Êı×éÖĞ¡£Ê¹ÓÃqsortº¯Êı±ØĞë×Ô¼ºĞ´Ò»¸ö±È½Ïº¯Êı¡£
+qsortåŒ…å«åœ¨<stdlib.h>å¤´æ–‡ä»¶ä¸­ï¼Œæ­¤å‡½æ•°æ ¹æ®ä½ ç»™çš„æ¯”è¾ƒæ¡ä»¶è¿›è¡Œå¿«é€Ÿæ’åºï¼Œé€šè¿‡æŒ‡é’ˆç§»åŠ¨å®ç°æ’åºã€‚æ’åºä¹‹åçš„ç»“æœä»ç„¶æ”¾åœ¨åŸæ•°ç»„ä¸­ã€‚ä½¿ç”¨qsortå‡½æ•°å¿…é¡»è‡ªå·±å†™ä¸€ä¸ªæ¯”è¾ƒå‡½æ•°ã€‚
 
-º¯ÊıÔ­ĞÍ£º
+å‡½æ•°åŸå‹ï¼š
 
 void qsort( void * base, size_t num, size_t size, int ( * comparator ) ( const void *, const void * ) );
 
-ÓÃ·¨ÒÔ¼°²ÎÊıËµÃ÷£º
+ç”¨æ³•ä»¥åŠå‚æ•°è¯´æ˜ï¼š
 
 Sorts the num elements of the array pointed by base, each element size bytes long, using the comparator function to determine the order.
 
@@ -12,15 +12,15 @@ The sorting algorithm used by this function compares pairs of values by calling 
 
 The function does not return any value, but modifies the content of the array pointed by base reordering its elements to the newly sorted order.
 
-   base Pointer to the first element of the array to be sorted.(Êı×éÆğÊ¼µØÖ·)
-   num Number of elements in the array pointed by base.(Êı×éÔªËØ¸öÊı)
-   size Size in bytes of each element in the array.(Ã¿Ò»¸öÔªËØµÄ´óĞ¡)
-comparator Function that compares two elements.(º¯ÊıÖ¸Õë£¬Ö¸Ïò±È½Ïº¯Êı)
-   1¡¢The function must accept two parameters that are pointers to elements, type-casted as void*. These parameters should be cast back to some data type and be compared.
-   2¡¢The return value of this function should represent whether elem1 is considered less than, equal to, or greater than elem2 by returning, respectively, a negative value, zero or a positive value.
-Return Value none (ÎŞ·µ»ØÖµ)
+   base Pointer to the first element of the array to be sorted.(æ•°ç»„èµ·å§‹åœ°å€)
+   num Number of elements in the array pointed by base.(æ•°ç»„å…ƒç´ ä¸ªæ•°)
+   size Size in bytes of each element in the array.(æ¯ä¸€ä¸ªå…ƒç´ çš„å¤§å°)
+comparator Function that compares two elements.(å‡½æ•°æŒ‡é’ˆï¼ŒæŒ‡å‘æ¯”è¾ƒå‡½æ•°)
+   1ã€The function must accept two parameters that are pointers to elements, type-casted as void*. These parameters should be cast back to some data type and be compared.
+   2ã€The return value of this function should represent whether elem1 is considered less than, equal to, or greater than elem2 by returning, respectively, a negative value, zero or a positive value.
+Return Value none (æ— è¿”å›å€¼)
 
-   Ò»¡¢¶ÔintÀàĞÍÊı×éÅÅĞò
+   ä¸€ã€å¯¹intç±»å‹æ•°ç»„æ’åº
 
    int num[100];
 
@@ -30,7 +30,7 @@ Return Value none (ÎŞ·µ»ØÖµ)
 
 qsort(num,100,sizeof(num[0]),cmp);
 
-¶ş¡¢¶ÔcharÀàĞÍÊı×éÅÅĞò£¨Í¬intÀàĞÍ£©
+äºŒã€å¯¹charç±»å‹æ•°ç»„æ’åºï¼ˆåŒintç±»å‹ï¼‰
 
 char word[100];
 
@@ -41,7 +41,7 @@ int cmp( const void *a , const void *b )
 
 qsort(word,100,sizeof(word[0]),cmp);
 
-Èı¡¢¶ÔdoubleÀàĞÍÊı×éÅÅĞò
+ä¸‰ã€å¯¹doubleç±»å‹æ•°ç»„æ’åº
 
 double in[100];
 
@@ -52,14 +52,14 @@ int cmp( const void *a , const void *b )
 
 qsort(in,100,sizeof(in[0]),cmp);
 
-ËÄ¡¢¶Ô½á¹¹ÌåÒ»¼¶ÅÅĞò
+å››ã€å¯¹ç»“æ„ä½“ä¸€çº§æ’åº
 
 struct Sample{
    double data;
    int other;
 }s[100];
 
-//°´ÕÕdataµÄÖµ´ÓĞ¡µ½´ó½«½á¹¹ÌåÅÅĞò
+//æŒ‰ç…§dataçš„å€¼ä»å°åˆ°å¤§å°†ç»“æ„ä½“æ’åº
 
 int cmp(const void *a ,const void *b){
    return (*(Sample *)a).data > (*(Sample *)b).data ? 1 : -1;
@@ -67,7 +67,7 @@ int cmp(const void *a ,const void *b){
 
 qsort(s,100,sizeof(s[0]),cmp);
 
-Îå¡¢¶Ô½á¹¹Ìå¶ş¼¶ÅÅĞò
+äº”ã€å¯¹ç»“æ„ä½“äºŒçº§æ’åº
 
 struct Sample
 {
@@ -75,7 +75,7 @@ struct Sample
    int y;
 }s[100];
 
-//°´ÕÕx´ÓĞ¡µ½´óÅÅĞò£¬µ±xÏàµÈÊ±°´ÕÕy´Ó´óµ½Ğ¡ÅÅĞò
+//æŒ‰ç…§xä»å°åˆ°å¤§æ’åºï¼Œå½“xç›¸ç­‰æ—¶æŒ‰ç…§yä»å¤§åˆ°å°æ’åº
 
 int cmp( const void *a , const void *b )
 {
@@ -87,7 +87,7 @@ int cmp( const void *a , const void *b )
 
 qsort(s,100,sizeof(s[0]),cmp);
 
-Áù¡¢¶Ô×Ö·û´®½øĞĞÅÅĞò
+å…­ã€å¯¹å­—ç¬¦ä¸²è¿›è¡Œæ’åº
 
 struct Sample
 {
@@ -95,7 +95,7 @@ struct Sample
    char str[100];
 }s[100];
 
-//°´ÕÕ½á¹¹ÌåÖĞ×Ö·û´®strµÄ×ÖµäË³ĞòÅÅĞò
+//æŒ‰ç…§ç»“æ„ä½“ä¸­å­—ç¬¦ä¸²strçš„å­—å…¸é¡ºåºæ’åº
 
 int cmp ( const void *a , const void *b )
 {
@@ -104,7 +104,7 @@ int cmp ( const void *a , const void *b )
 
 qsort(s,100,sizeof(s[0]),cmp);
 
-¸½¼ÓÒ»¸öÍêÕûµãµÄ´úÂë£¬¶Ô×Ö·û´®¶şÎ¬Êı×éÅÅĞò£º
+é™„åŠ ä¸€ä¸ªå®Œæ•´ç‚¹çš„ä»£ç ï¼Œå¯¹å­—ç¬¦ä¸²äºŒç»´æ•°ç»„æ’åºï¼š
 
 #include <stdio.h>
 #include <stdlib.h>

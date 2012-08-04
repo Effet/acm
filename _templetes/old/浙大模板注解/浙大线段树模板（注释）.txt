@@ -1,65 +1,65 @@
-//Ïß¶ÎÊ÷µÄÓ¦ÓÃ£º
-//1£©ÇóÃæ»ý£º
-//Ò».×ø±êÀëÉ¢»¯£»
-//¶þ.´¹Ö±±ß°´x×ø±êÅÅÐò£»
-//Èý.´Ó×óÍùÓÒÓÃÏß¶ÎÊ÷´¦Àí´¹Ö±±ß£¬ÀÛ¼ÆÃ¿¸öÀëÉ¢xÇø¼ä³¤¶ÈºÍÏß¶ÎÊ÷³¤¶ÈµÄ³Ë»ý¡£
-//2£©ÇóÖÜ³¤£º
-//Ò».×ø±êÀëÉ¢»¯£»
-//¶þ.´¹Ö±±ß°´x×ø±êÅÅÐò£¬µÚ¶þ¹Ø¼ü×ÖÎªÈë±ßÓÅÓÚ³ö±ß£»
-//Èý.´Ó×óÍùÓÒÓÃÏß¶ÎÊ÷´¦Àí´¹Ö±±ß£¬ÔÚÃ¿¸öÀëÉ¢µãÉÏÏÈ¼ÓÈëËùÓÐÈë±ß£¬ÀÛ¼ÆÏß¶ÎÊ÷³¤¶È±ä»¯Öµ£¬ÔÙÉ¾³ýËùÓÐ³ö±ß£¬ÀÛ¼ÆÏß¶ÎÊ÷³¤¶È±ä»¯Öµ£»
-//ËÄ.Ë®Æ½±ß°´y×ø±êÅÅÐò£¬µÚ¶þ¹Ø¼ü×ÖÎªÈë±ßÓÅÓÚ³ö±ß£»
-//Îå.´ÓÉÏÍùÏÂÓÃÏß¶ÎÊ÷´¦ÀíË®Æ½±ß£¬ÔÚÃ¿¸öÀëÉ¢µãÉÏÏÈ¼ÓÈëËùÓÐÈë±ß£¬ÀÛ¼ÆÏß¶ÎÊ÷³¤¶È±ä»¯Öµ£¬ÔÙÉ¾³ýËùÓÐ³ö±ß£¬ÀÛ¼ÆÏß¶ÎÊ÷³¤¶È±ä»¯Öµ¡£
+//çº¿æ®µæ ‘çš„åº”ç”¨ï¼š
+//1ï¼‰æ±‚é¢ç§¯ï¼š
+//ä¸€.åæ ‡ç¦»æ•£åŒ–ï¼›
+//äºŒ.åž‚ç›´è¾¹æŒ‰xåæ ‡æŽ’åºï¼›
+//ä¸‰.ä»Žå·¦å¾€å³ç”¨çº¿æ®µæ ‘å¤„ç†åž‚ç›´è¾¹ï¼Œç´¯è®¡æ¯ä¸ªç¦»æ•£xåŒºé—´é•¿åº¦å’Œçº¿æ®µæ ‘é•¿åº¦çš„ä¹˜ç§¯ã€‚
+//2ï¼‰æ±‚å‘¨é•¿ï¼š
+//ä¸€.åæ ‡ç¦»æ•£åŒ–ï¼›
+//äºŒ.åž‚ç›´è¾¹æŒ‰xåæ ‡æŽ’åºï¼Œç¬¬äºŒå…³é”®å­—ä¸ºå…¥è¾¹ä¼˜äºŽå‡ºè¾¹ï¼›
+//ä¸‰.ä»Žå·¦å¾€å³ç”¨çº¿æ®µæ ‘å¤„ç†åž‚ç›´è¾¹ï¼Œåœ¨æ¯ä¸ªç¦»æ•£ç‚¹ä¸Šå…ˆåŠ å…¥æ‰€æœ‰å…¥è¾¹ï¼Œç´¯è®¡çº¿æ®µæ ‘é•¿åº¦å˜åŒ–å€¼ï¼Œå†åˆ é™¤æ‰€æœ‰å‡ºè¾¹ï¼Œç´¯è®¡çº¿æ®µæ ‘é•¿åº¦å˜åŒ–å€¼ï¼›
+//å››.æ°´å¹³è¾¹æŒ‰yåæ ‡æŽ’åºï¼Œç¬¬äºŒå…³é”®å­—ä¸ºå…¥è¾¹ä¼˜äºŽå‡ºè¾¹ï¼›
+//äº”.ä»Žä¸Šå¾€ä¸‹ç”¨çº¿æ®µæ ‘å¤„ç†æ°´å¹³è¾¹ï¼Œåœ¨æ¯ä¸ªç¦»æ•£ç‚¹ä¸Šå…ˆåŠ å…¥æ‰€æœ‰å…¥è¾¹ï¼Œç´¯è®¡çº¿æ®µæ ‘é•¿åº¦å˜åŒ–å€¼ï¼Œå†åˆ é™¤æ‰€æœ‰å‡ºè¾¹ï¼Œç´¯è®¡çº¿æ®µæ ‘é•¿åº¦å˜åŒ–å€¼ã€‚
 //
-//»ù±¾Ïß¶ÎÊ÷´úÂë£º
-//»ù±¾Ïß¶ÎÊ÷£¬¿ÉÒÔ´¦Àí¼ÓÈë±ßºÍÉ¾³ý±ß²»Í¬µÄÇé¿ö
-//tÊÇ´«ÈëµÄÏß¶ÎÊ÷µÄ¸ù½Úµã
-//l0, r0ÊÇ´«ÈëµÄÏß¶ÎÊ÷µÄ½Úµã·¶Î§
-//l£¬rÊÇÏß¶ÎÊ÷ÖÐµÄÒ»¸öÇø¼äµÄÁ½¸ö¶Ëµã
+//åŸºæœ¬çº¿æ®µæ ‘ä»£ç ï¼š
+//åŸºæœ¬çº¿æ®µæ ‘ï¼Œå¯ä»¥å¤„ç†åŠ å…¥è¾¹å’Œåˆ é™¤è¾¹ä¸åŒçš„æƒ…å†µ
+//tæ˜¯ä¼ å…¥çš„çº¿æ®µæ ‘çš„æ ¹èŠ‚ç‚¹
+//l0, r0æ˜¯ä¼ å…¥çš„çº¿æ®µæ ‘çš„èŠ‚ç‚¹èŒƒå›´
+//lï¼Œræ˜¯çº¿æ®µæ ‘ä¸­çš„ä¸€ä¸ªåŒºé—´çš„ä¸¤ä¸ªç«¯ç‚¹
 #define MAXN 10000
 
 struct segtree{
 	int n;
-	int cnt[MAXN]; //¸²¸ÇÕâÒ»½ÚµãÇø¼äµÄÏß¶ÎµÄ¸öÊý
-	int len[MAXN]; //Çø¼äµÄ³¤¶È
+	int cnt[MAXN]; //è¦†ç›–è¿™ä¸€èŠ‚ç‚¹åŒºé—´çš„çº¿æ®µçš„ä¸ªæ•°
+	int len[MAXN]; //åŒºé—´çš„é•¿åº¦
 	segtree(int t) :n(t){
-		for(int i = 1; i<=t; i++) //³õÊ¼»¯Êý×é
+		for(int i = 1; i<=t; i++) //åˆå§‹åŒ–æ•°ç»„
 			cnt[i] = len[i] = 0;
 	};
 
-	//³ÉÔ±º¯ÊýÀ²
-	void update(int t, int l, int r); //¸üÐÂÒÔtÎª¸ù½ÚµãµÄÏß¶ÎÊ÷µÄÇø¼ä³¤¶Èlen[t]
-	void inc_seg(int t, int l0, int r0, int l, int r); //¼ÓÈë±ß
-	void dec_seg(int t, int l0, int r0, int l, int r); //É¾³ý±ß
-	int seg_len(int t, int l0, int r0, int l, int r); //ÇóÏß¶ÎÊ÷µÄ³¤¶È
+	//æˆå‘˜å‡½æ•°å•¦
+	void update(int t, int l, int r); //æ›´æ–°ä»¥tä¸ºæ ¹èŠ‚ç‚¹çš„çº¿æ®µæ ‘çš„åŒºé—´é•¿åº¦len[t]
+	void inc_seg(int t, int l0, int r0, int l, int r); //åŠ å…¥è¾¹
+	void dec_seg(int t, int l0, int r0, int l, int r); //åˆ é™¤è¾¹
+	int seg_len(int t, int l0, int r0, int l, int r); //æ±‚çº¿æ®µæ ‘çš„é•¿åº¦
 };
 
-//Çø¼ä(l, r)µÄ³¤¶È
+//åŒºé—´(l, r)çš„é•¿åº¦
 int length(int l, int r){
 	return (r-l);
 }
 
-//¸üÐÂÒÔtÎª¸ù½ÚµãµÄÏß¶ÎÊ÷µÄÇø¼ä³¤¶Èlen[t]
+//æ›´æ–°ä»¥tä¸ºæ ¹èŠ‚ç‚¹çš„çº¿æ®µæ ‘çš„åŒºé—´é•¿åº¦len[t]
 void segtree::update(int t, int l, int r){
 	if(cnt[t]||(r-l)==1)
 		len[t] = length(l, r);
 	else
-		len[t] = len[t+t]+len[t+t+1]; //×óÓÒ×ÓÊ÷Çø¼ä³¤¶ÈÖ®ºÍ
+		len[t] = len[t+t]+len[t+t+1]; //å·¦å³å­æ ‘åŒºé—´é•¿åº¦ä¹‹å’Œ
 }
 
-//ÏòÒÔtÎª¸ù½Úµã¡¢Çø¼äÎª(l0, r0)µÄÏß¶ÎÊ÷ÖÐ¼ÓÈëÇø¼ä(l, r)
+//å‘ä»¥tä¸ºæ ¹èŠ‚ç‚¹ã€åŒºé—´ä¸º(l0, r0)çš„çº¿æ®µæ ‘ä¸­åŠ å…¥åŒºé—´(l, r)
 void segtree::inc_seg(int t, int l0, int r0, int l, int r){
 	if(l0==l&&r0==r){
 		cnt[t]++;
 	}else{
-		int m0 = (l0+r0)>>1; //¼´(l0+r0)/2
-		if(l<m0) //¸²¸Çµ½×óº¢×ÓÇø¼ä
+		int m0 = (l0+r0)>>1; //å³(l0+r0)/2
+		if(l<m0) //è¦†ç›–åˆ°å·¦å­©å­åŒºé—´
 		{
-			//Ïò×óº¢×ÓÇø¼ä²åÈë(l, r)
+			//å‘å·¦å­©å­åŒºé—´æ’å…¥(l, r)
 			inc_seg(t+t, l0, m0, l, m0<r ? m0 : r);
 		}
-		if(r>m0) //¸²¸Çµ½ÓÒº¢×ÓÇø¼ä
+		if(r>m0) //è¦†ç›–åˆ°å³å­©å­åŒºé—´
 		{
-			//ÏòÓÒº¢×ÓÇø¼ä²åÈë(l, r)
+			//å‘å³å­©å­åŒºé—´æ’å…¥(l, r)
 			inc_seg(t+t+1, m0, r0, m0>l ? m0 : l, r);
 		}
 		if(cnt[t+t]&&cnt[t+t+1]){
@@ -73,16 +73,16 @@ void segtree::inc_seg(int t, int l0, int r0, int l, int r){
 	update(t, l0, r0);
 }
 
-//ÏòÒÔtÎª¸ù½Úµã¡¢Çø¼äÎª(l0, r0)µÄÏß¶ÎÊ÷ÖÐÉ¾³ýÇø¼ä(l, r)
+//å‘ä»¥tä¸ºæ ¹èŠ‚ç‚¹ã€åŒºé—´ä¸º(l0, r0)çš„çº¿æ®µæ ‘ä¸­åˆ é™¤åŒºé—´(l, r)
 void segtree::dec_seg(int t, int l0, int r0, int l, int r){
 	if(l0==l&&r0==r)
 		cnt[t]--;
 	else if(cnt[t]){
 		cnt[t]--;
 		if(l>l0)
-			inc_seg(t, l0, r0, l0, l); //µÖÏûÉÏÃæµÄcnt[t]--
+			inc_seg(t, l0, r0, l0, l); //æŠµæ¶ˆä¸Šé¢çš„cnt[t]--
 		if(r<r0)
-			inc_seg(t, l0, r0, r, r0); //Í¬ÉÏ
+			inc_seg(t, l0, r0, r, r0); //åŒä¸Š
 	}else{
 		int m0 = (l0+r0)>>1;
 		if(l<m0)
@@ -93,7 +93,7 @@ void segtree::dec_seg(int t, int l0, int r0, int l, int r){
 	update(t, l0, r0);
 }
 
-//ÇóÏß¶ÎÊ÷ÖÐÇø¼ä(l, r)µÄÇø¼ä³¤¶È£¬(l0, r0)ÊÇÏß¶ÎÊ÷µÄ³õÊ¼½ÚµãÇø¼ä
+//æ±‚çº¿æ®µæ ‘ä¸­åŒºé—´(l, r)çš„åŒºé—´é•¿åº¦ï¼Œ(l0, r0)æ˜¯çº¿æ®µæ ‘çš„åˆå§‹èŠ‚ç‚¹åŒºé—´
 int segtree::seg_len(int t, int l0, int r0, int l, int r){
 	if(cnt[t]||(l0==l&&r0==r))
 		return len[t];
@@ -109,47 +109,47 @@ int segtree::seg_len(int t, int l0, int r0, int l, int r){
 	}
 }
 
-//Ïß¶ÎÊ÷µÄÀ©Õ¹´úÂëÈçÏÂ£º
-//Ïß¶ÎÊ÷À©Õ¹£¬¿ÉÒÔ¼ÆËã³¤¶ÈºÍÏß¶ÎÊ÷
-//¿ÉÒÔ´¦Àí¼ÓÈë±ßºÍÉ¾³ý±ß²»Í¬µÄÇé¿ö
-//tÊÇ´«ÈëµÄÏß¶ÎÊ÷µÄ¸ù½Úµã
-//l0, r0ÊÇ´«ÈëµÄÏß¶ÎÊ÷µÄ½Úµã·¶Î§
-//l£¬rÊÇÏß¶ÎÊ÷ÖÐµÄÒ»¸öÇø¼äµÄÁ½¸ö¶Ëµã
+//çº¿æ®µæ ‘çš„æ‰©å±•ä»£ç å¦‚ä¸‹ï¼š
+//çº¿æ®µæ ‘æ‰©å±•ï¼Œå¯ä»¥è®¡ç®—é•¿åº¦å’Œçº¿æ®µæ ‘
+//å¯ä»¥å¤„ç†åŠ å…¥è¾¹å’Œåˆ é™¤è¾¹ä¸åŒçš„æƒ…å†µ
+//tæ˜¯ä¼ å…¥çš„çº¿æ®µæ ‘çš„æ ¹èŠ‚ç‚¹
+//l0, r0æ˜¯ä¼ å…¥çš„çº¿æ®µæ ‘çš„èŠ‚ç‚¹èŒƒå›´
+//lï¼Œræ˜¯çº¿æ®µæ ‘ä¸­çš„ä¸€ä¸ªåŒºé—´çš„ä¸¤ä¸ªç«¯ç‚¹
 #define MAXN 10000
 
 struct segtree{
 	int n;
-	int cnt[MAXN]; //¸²¸ÇÕâÒ»½ÚµãÇø¼äµÄÏß¶ÎµÄ¸öÊý
-	int len[MAXN]; //Çø¼äµÄ³¤¶È
-	int cut[MAXN]; //´æ·ÅÏß¶ÎÊý
-	int bl[MAXN]; //±êÊ¶×ó¶ËµãÊÇ·ñ±»Çø¼ä¸²¸Çµ½
-	int br[MAXN]; //±êÊ¶ÓÒ¶ËµãÊÇ·ñ±»Çø¼ä¸²¸Çµ½
+	int cnt[MAXN]; //è¦†ç›–è¿™ä¸€èŠ‚ç‚¹åŒºé—´çš„çº¿æ®µçš„ä¸ªæ•°
+	int len[MAXN]; //åŒºé—´çš„é•¿åº¦
+	int cut[MAXN]; //å­˜æ”¾çº¿æ®µæ•°
+	int bl[MAXN]; //æ ‡è¯†å·¦ç«¯ç‚¹æ˜¯å¦è¢«åŒºé—´è¦†ç›–åˆ°
+	int br[MAXN]; //æ ‡è¯†å³ç«¯ç‚¹æ˜¯å¦è¢«åŒºé—´è¦†ç›–åˆ°
 	segtree(int t) :
 		n(t){
-		for(int i = 1; i<=t; i++) //³õÊ¼»¯Êý×é
+		for(int i = 1; i<=t; i++) //åˆå§‹åŒ–æ•°ç»„
 			cnt[i] = len[i] = cut[i] = bl[i] = br[i] = 0;
 	}
 	;
 
-	//º¯ÊýÀ²
-	void update(int t, int l, int r); //¸üÐÂÒÔtÎª¸ù½ÚµãµÄÏß¶ÎÊ÷µÄÇø¼ä³¤¶Èlen[t]
-	void inc_seg(int t, int l0, int r0, int l, int r); //¼ÓÈë±ß
-	void dec_seg(int t, int l0, int r0, int l, int r); //É¾³ý±ß
-	int seg_len(int t, int l0, int r0, int l, int r); //ÇóÇø¼äµÄ³¤¶È
-	int seg_cut(int t, int l0, int r0, int l, int r); //ÇóÏß¶ÎÊý
+	//å‡½æ•°å•¦
+	void update(int t, int l, int r); //æ›´æ–°ä»¥tä¸ºæ ¹èŠ‚ç‚¹çš„çº¿æ®µæ ‘çš„åŒºé—´é•¿åº¦len[t]
+	void inc_seg(int t, int l0, int r0, int l, int r); //åŠ å…¥è¾¹
+	void dec_seg(int t, int l0, int r0, int l, int r); //åˆ é™¤è¾¹
+	int seg_len(int t, int l0, int r0, int l, int r); //æ±‚åŒºé—´çš„é•¿åº¦
+	int seg_cut(int t, int l0, int r0, int l, int r); //æ±‚çº¿æ®µæ•°
 };
 
 int length(int l, int r){
 	return (r-l);
 }
-//¸üÐÂÒÔtÎª¸ù½Úµã¡¢Çø¼äÎª[l, r]µÄÏß¶ÎÊ÷µÄÇø¼ä³¤¶Èlen[t]
-//ºÍÏß¶ÎÊýcut[t]¼°Æä×óÓÒ¶Ëµã±êÊ¶bl[t]ºÍbr[t]
+//æ›´æ–°ä»¥tä¸ºæ ¹èŠ‚ç‚¹ã€åŒºé—´ä¸º[l, r]çš„çº¿æ®µæ ‘çš„åŒºé—´é•¿åº¦len[t]
+//å’Œçº¿æ®µæ•°cut[t]åŠå…¶å·¦å³ç«¯ç‚¹æ ‡è¯†bl[t]å’Œbr[t]
 void segtree::update(int t, int l, int r){
 	if(cnt[t]||(r-l)==1){
 		len[t] = length(l, r);
 		cut[t] = bl[t] = br[t] = 1;
 	}else{
-		len[t] = len[t+t]+len[t+t+1]; //×óÓÒ×ÓÊ÷³¤¶ÈÖ®ºÍ
+		len[t] = len[t+t]+len[t+t+1]; //å·¦å³å­æ ‘é•¿åº¦ä¹‹å’Œ
 		cut[t] = cut[t+t]+cut[t+t+1];
 		if(br[t+t]&&bl[t+t+1])
 			cut[t]--;
@@ -157,22 +157,22 @@ void segtree::update(int t, int l, int r){
 		br[t] = br[t+t+1];
 	}
 }
-//ÏòÒÔtÎª¸ù½Úµã¡¢Çø¼äÎª(l0, r0)µÄÏß¶ÎÊ÷ÖÐ¼ÓÈëÇø¼ä(l, r)
+//å‘ä»¥tä¸ºæ ¹èŠ‚ç‚¹ã€åŒºé—´ä¸º(l0, r0)çš„çº¿æ®µæ ‘ä¸­åŠ å…¥åŒºé—´(l, r)
 void segtree::inc_seg(int t, int l0, int r0, int l, int r){
 	if(l0==l&&r0==r){
 		cnt[t]++;
 	}else{
-		int m0 = (l0+r0)>>1; //¼´(l0+r0)/2
+		int m0 = (l0+r0)>>1; //å³(l0+r0)/2
 
-		if(l<m0) //¸²¸Çµ½×óº¢×ÓÇø¼ä
+		if(l<m0) //è¦†ç›–åˆ°å·¦å­©å­åŒºé—´
 		{
-			//Ïò×óº¢×ÓÇø¼ä²åÈë(l, r)
+			//å‘å·¦å­©å­åŒºé—´æ’å…¥(l, r)
 			inc_seg(t+t, l0, m0, l, m0<r ? m0 : r);
 		}
 
-		if(r>m0) //¸²¸Çµ½ÓÒº¢×ÓÇø¼ä
+		if(r>m0) //è¦†ç›–åˆ°å³å­©å­åŒºé—´
 		{
-			//ÏòÓÒº¢×ÓÇø¼ä²åÈë(l, r)
+			//å‘å³å­©å­åŒºé—´æ’å…¥(l, r)
 			inc_seg(t+t+1, m0, r0, m0>l ? m0 : l, r);
 		}
 
@@ -186,16 +186,16 @@ void segtree::inc_seg(int t, int l0, int r0, int l, int r){
 	}
 	update(t, l0, r0);
 }
-//ÏòÒÔtÎª¸ù½Úµã¡¢Çø¼äÎª(l0, r0)µÄÏß¶ÎÊ÷ÖÐÉ¾³ýÇø¼ä(l, r)
+//å‘ä»¥tä¸ºæ ¹èŠ‚ç‚¹ã€åŒºé—´ä¸º(l0, r0)çš„çº¿æ®µæ ‘ä¸­åˆ é™¤åŒºé—´(l, r)
 void segtree::dec_seg(int t, int l0, int r0, int l, int r){
 	if(l0==l&&r0==r)
 		cnt[t]--;
 	else if(cnt[t]){
 		cnt[t]--;
 		if(l>l0)
-			inc_seg(t, l0, r0, l0, l); //µÖÏûÉÏÃæµÄcnt[t]--
+			inc_seg(t, l0, r0, l0, l); //æŠµæ¶ˆä¸Šé¢çš„cnt[t]--
 		if(r<r0)
-			inc_seg(t, l0, r0, r, r0); //Í¬ÉÏ
+			inc_seg(t, l0, r0, r, r0); //åŒä¸Š
 	}else{
 		int m0 = (l0+r0)>>1;
 		if(l<m0)
@@ -205,7 +205,7 @@ void segtree::dec_seg(int t, int l0, int r0, int l, int r){
 	}
 	update(t, l0, r0);
 }
-//ÇóÏß¶ÎÊ÷ÖÐÇø¼ä(l, r)µÄÇø¼ä³¤¶È£¬(l0, r0)ÊÇÏß¶ÎÊ÷µÄ³õÊ¼½ÚµãÇø¼ä
+//æ±‚çº¿æ®µæ ‘ä¸­åŒºé—´(l, r)çš„åŒºé—´é•¿åº¦ï¼Œ(l0, r0)æ˜¯çº¿æ®µæ ‘çš„åˆå§‹èŠ‚ç‚¹åŒºé—´
 int segtree::seg_len(int t, int l0, int r0, int l, int r){
 	if(cnt[t]||(l0==l&&r0==r))
 		return len[t];
@@ -221,7 +221,7 @@ int segtree::seg_len(int t, int l0, int r0, int l, int r){
 	}
 }
 
-//ÇóÏß¶ÎÊ÷ÖÐÇø¼ä(l, r)µÄÁ¬ÐøÏß¶ÎÊý£¬(l0, r0)ÊÇÏß¶ÎÊ÷µÄ³õÊ¼½ÚµãÇø¼ä
+//æ±‚çº¿æ®µæ ‘ä¸­åŒºé—´(l, r)çš„è¿žç»­çº¿æ®µæ•°ï¼Œ(l0, r0)æ˜¯çº¿æ®µæ ‘çš„åˆå§‹èŠ‚ç‚¹åŒºé—´
 int segtree::seg_cut(int t, int l0, int r0, int l, int r){
 	if(cnt[t])
 		return 1;

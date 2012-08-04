@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>North America - Greater NY</title>
+
+  <description>
+    <![CDATA[
+             略。
+    ]]>
+  </description>
+
+  <source>
+    <judge>uva_live/4877</judge>
+    <contest>Regionals/2010/North America - Greater NY/E</contest>
+  </source>
+
+  <tags>
+    <tag>dp</tag>
+    <tag>组合数学</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               略。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

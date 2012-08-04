@@ -1,15 +1,15 @@
-//ÓÃÓÚ¼ÆÊıµÄÏß¶ÎÊ÷
+//ç”¨äºè®¡æ•°çš„çº¿æ®µæ ‘
 class SegTree{
-	static const int UPBOUND = (1<<17);//UPBOUNDĞèÎª2µÄÃİ£¬ËùÓĞÏß¶ÎÓ¦ÔÚ[0,UPBOUND)ÉÏ
+	static const int UPBOUND = (1<<17);//UPBOUNDéœ€ä¸º2çš„å¹‚ï¼Œæ‰€æœ‰çº¿æ®µåº”åœ¨[0,UPBOUND)ä¸Š
 	int segbg[(UPBOUND<<1)];
 	int segen[(UPBOUND<<1)];
-	int cover[(UPBOUND<<1)];//¸²¸Ç´ÎÊı
+	int cover[(UPBOUND<<1)];//è¦†ç›–æ¬¡æ•°
 	int a, b, x;
 
 	void _makeSegTree(int i, int a, int b){
 		segbg[i] = a;
 		segen[i] = b;
-		if(a+1<b){//Èç¹ûÏß¶Î³¤¶È´óÓÚ1
+		if(a+1<b){//å¦‚æœçº¿æ®µé•¿åº¦å¤§äº1
 			_makeSegTree(i*2+1, a, a+(b-a)/2);
 			_makeSegTree(i*2+2, a+(b-a)/2, b);
 		}
@@ -60,7 +60,7 @@ public:
 	void clearCover(){
 		mset(cover, 0);
 	}
-	//Ä¬ÈÏÇø¼äÎª[a,b)
+	//é»˜è®¤åŒºé—´ä¸º[a,b)
 	void insertSeg(int a, int b, int x = 1){
 		SegTree::a = a;
 		SegTree::b = b;

@@ -1,2 +1,2 @@
-failָ��Ĺ���ؼ����ҵ����ǵ���ƥ�䴮�ĺ�׺������trie��һ��ģʽ����ǰ׺������ַ�����
+fail指针的构造关键是找到即是当点匹配串的后缀，又是trie中一个模式串的前缀的最长的字符串。
 http://plussai.iteye.com/blog/1143023

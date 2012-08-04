@@ -7,50 +7,50 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-/*»¹ÓĞÒ»¸öĞŞ¸ÄÃ»¼Ó*/
-typedef struct //Ïß¶ÎÊ÷µÄ½á¹¹Ìå 
-{//l±íÊ¾×ó¶Ëµã rÓÒ¶Ëµã max±íÊ¾ÕâÒ»¶ÎµÄ×î´óÖµ min±íÊ¾ÕâÒ»¶ÎµÄ×îĞ¡Öµ
+/*è¿˜æœ‰ä¸€ä¸ªä¿®æ”¹æ²¡åŠ */
+typedef struct //çº¿æ®µæ ‘çš„ç»“æ„ä½“ 
+{//lè¡¨ç¤ºå·¦ç«¯ç‚¹ rå³ç«¯ç‚¹ maxè¡¨ç¤ºè¿™ä¸€æ®µçš„æœ€å¤§å€¼ minè¡¨ç¤ºè¿™ä¸€æ®µçš„æœ€å°å€¼
 	int l, r;
 	int max, min;
 } Tree;
-Tree node[500006*4];//4±¶
-void init_node(int idx, int _l, int _r){//³õÊ¼»¯Ïß¶ÎÊ÷
+Tree node[500006*4];//4å€
+void init_node(int idx, int _l, int _r){//åˆå§‹åŒ–çº¿æ®µæ ‘
 	int mid;
-	node[idx].l = _l;//ÕâÀï²»¹ÜÔõÑù¶¼Òª¸³Öµ,È·¶¨±ß½ç
+	node[idx].l = _l;//è¿™é‡Œä¸ç®¡æ€æ ·éƒ½è¦èµ‹å€¼,ç¡®å®šè¾¹ç•Œ
 	node[idx].r = _r;
-	if(_l==_r){//Èç¹ûµ½ÁËµ×²ãÁËÖ±½Ó·µ»Ø
+	if(_l==_r){//å¦‚æœåˆ°äº†åº•å±‚äº†ç›´æ¥è¿”å›
 		return;
 	}
 	mid = (_l+_r)>>1;
-	init_node(2*idx, _l, mid);//³õÊ¼»¯×ó×ÓÊ÷
-	init_node(2*idx+1, mid+1, _r);//³õÊ¼»¯ÓÒ×ÓÊ÷
+	init_node(2*idx, _l, mid);//åˆå§‹åŒ–å·¦å­æ ‘
+	init_node(2*idx+1, mid+1, _r);//åˆå§‹åŒ–å³å­æ ‘
 }
-void insert(int idx, int _l, int _r, int val){//²åÈëÒ»¸öÖµ
+void insert(int idx, int _l, int _r, int val){//æ’å…¥ä¸€ä¸ªå€¼
 	int mid;
-	if(_l<=node[idx].l&&_r>=node[idx].r){//Èç¹ûÇøÓò¸²¸ÇÕâ¿ÃÊ÷¾ÍÖ±½Ó¸Ä±äÕâ¿ÃÊ÷¾ÍĞĞÁË ²»¸Ä±ä×ÓÊ÷µÄĞÅÏ¢
+	if(_l<=node[idx].l&&_r>=node[idx].r){//å¦‚æœåŒºåŸŸè¦†ç›–è¿™æ£µæ ‘å°±ç›´æ¥æ”¹å˜è¿™æ£µæ ‘å°±è¡Œäº† ä¸æ”¹å˜å­æ ‘çš„ä¿¡æ¯
 		node[idx].min = node[idx].max = val;
 		return;
 	}
-	if(_r<=node[2*idx].r){//²åÈë×ó×ÓÊ÷ 
+	if(_r<=node[2*idx].r){//æ’å…¥å·¦å­æ ‘ 
 		insert(2*idx, _l, _r, val);
-		//¸üĞÂ¸ÃÇøÓòµÄ×î´ó×îĞ¡Öµ
+		//æ›´æ–°è¯¥åŒºåŸŸçš„æœ€å¤§æœ€å°å€¼
 		if(node[2*idx].max>node[idx].max)
 			node[idx].max = node[2*idx].max;
 		if(node[2*idx].min<node[idx].min)
 			node[idx].min = node[2*idx].min;
 	}else{
-		if(_l>=node[2*idx+1].l){//²åÈëÓÒ×ÓÊ÷
+		if(_l>=node[2*idx+1].l){//æ’å…¥å³å­æ ‘
 			insert(2*idx+1, _l, _r, val);
-			//¸üĞÂ¸ÃÇøÓòµÄ×î´ó×îĞ¡Öµ
+			//æ›´æ–°è¯¥åŒºåŸŸçš„æœ€å¤§æœ€å°å€¼
 			if(node[2*idx+1].max>node[idx].max)
 				node[idx].max = node[2*idx+1].max;
 			if(node[2*idx+1].min<node[idx].min)
 				node[idx].min = node[2*idx+1].min;
 		}else{
-			//²åÈë×ó×ÓÊ÷ºÍÓÒ×ÓÊ÷
+			//æ’å…¥å·¦å­æ ‘å’Œå³å­æ ‘
 			insert(2*idx, _l, node[2*idx].r, val);
 			insert(2*idx+1, node[2*idx+1].l, _r, val);
-			//¸üĞÂ¸ÃÇøÓòµÄ×î´ó×îĞ¡Öµ
+			//æ›´æ–°è¯¥åŒºåŸŸçš„æœ€å¤§æœ€å°å€¼
 			if(node[2*idx].max>node[idx].max)
 				node[idx].max = node[2*idx].max;
 			if(node[2*idx].min<node[idx].min)
@@ -62,16 +62,16 @@ void insert(int idx, int _l, int _r, int val){//²åÈëÒ»¸öÖµ
 		}
 	}
 }
-int query_max(int idx, int _l, int _r){//Çó_lµ½_rÇø¼äµÄ×î´óÖµ
+int query_max(int idx, int _l, int _r){//æ±‚_låˆ°_råŒºé—´çš„æœ€å¤§å€¼
 	int max, max1;
-	if(_l<=node[idx].l&&_r>=node[idx].r)//Èç¹û¸²¸ÇÕâ¸öÇøÓò Ö±½Ó·µ»Ø
+	if(_l<=node[idx].l&&_r>=node[idx].r)//å¦‚æœè¦†ç›–è¿™ä¸ªåŒºåŸŸ ç›´æ¥è¿”å›
 		return node[idx].max;
-	if(_r<=node[2*idx].r){//·µ»Ø×ó×ÓÊ÷µÄ×î´óÖµ
+	if(_r<=node[2*idx].r){//è¿”å›å·¦å­æ ‘çš„æœ€å¤§å€¼
 		return query_max(2*idx, _l, _r);
 	}else{
-		if(_l>=node[2*idx+1].l)//·µ»ØÓÒ×ÓÊ÷µÄ×î´óÖµ
+		if(_l>=node[2*idx+1].l)//è¿”å›å³å­æ ‘çš„æœ€å¤§å€¼
 			return query_max(2*idx+1, _l, _r);
-		//·µ»Ø×ó×ÓÊ÷ºÍÓÒ×ÓÊ÷ÖĞ×î´óÖµµÄ×î´óÖµ
+		//è¿”å›å·¦å­æ ‘å’Œå³å­æ ‘ä¸­æœ€å¤§å€¼çš„æœ€å¤§å€¼
 		max = query_max(2*idx, _l, node[2*idx].r);
 		max1 = query_max(2*idx+1, node[2*idx+1].l, _r);
 		if(max>max1)
@@ -80,7 +80,7 @@ int query_max(int idx, int _l, int _r){//Çó_lµ½_rÇø¼äµÄ×î´óÖµ
 			return max1;
 	}
 }
-int query_min(int idx, int _l, int _r){//ÀàËÆÉÏÃæµÄquery_max
+int query_min(int idx, int _l, int _r){//ç±»ä¼¼ä¸Šé¢çš„query_max
 	int min, min1;
 	if(_l<=node[idx].l&&_r>=node[idx].r)
 		return node[idx].min;

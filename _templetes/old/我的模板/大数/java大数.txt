@@ -1,52 +1,52 @@
-1¡¢BigInteger£ºÕë¶Ô´óµÄÕûÊı£¬ ÊÇÒÔ×Ö·û´®·½Ê½½øĞĞ´«ÈËµÄ
+1ã€BigIntegerï¼šé’ˆå¯¹å¤§çš„æ•´æ•°ï¼Œ æ˜¯ä»¥å­—ç¬¦ä¸²æ–¹å¼è¿›è¡Œä¼ äººçš„
 import java.math.BigInteger ; 
 public class BigIntegerDemo01{ 
     public static void main(String args[]){ 
-        BigInteger bi1 = new BigInteger("123456789") ;  // ÉùÃ÷BigInteger¶ÔÏó 
-        BigInteger bi2 = new BigInteger("987654321") ;  // ÉùÃ÷BigInteger¶ÔÏó 
-        System.out.println("¼Ó·¨²Ù×÷£º" + bi2.add(bi1)) ;    // ¼Ó·¨²Ù×÷ 
-        System.out.println("¼õ·¨²Ù×÷£º" + bi2.subtract(bi1)) ;   // ¼õ·¨²Ù×÷ 
-        System.out.println("³Ë·¨²Ù×÷£º" + bi2.multiply(bi1)) ;   // ³Ë·¨²Ù×÷ 
-        System.out.println("³ı·¨²Ù×÷£º" + bi2.divide(bi1)) ; // ³ı·¨²Ù×÷ 
-        System.out.println("×î´óÊı£º" + bi2.max(bi1)) ;  // Çó³ö×î´óÊı 
-        System.out.println("×îĞ¡Êı£º" + bi2.min(bi1)) ;  // Çó³ö×îĞ¡Êı 
-        BigInteger result[] = bi2.divideAndRemainder(bi1) ; // Çó³öÓàÊıµÄ³ı·¨²Ù×÷ 
-        System.out.println("ÉÌÊÇ£º" + result[0] +  
-            "£»ÓàÊıÊÇ£º" + result[1]) ; 
+        BigInteger bi1 = new BigInteger("123456789") ;  // å£°æ˜BigIntegerå¯¹è±¡ 
+        BigInteger bi2 = new BigInteger("987654321") ;  // å£°æ˜BigIntegerå¯¹è±¡ 
+        System.out.println("åŠ æ³•æ“ä½œï¼š" + bi2.add(bi1)) ;    // åŠ æ³•æ“ä½œ 
+        System.out.println("å‡æ³•æ“ä½œï¼š" + bi2.subtract(bi1)) ;   // å‡æ³•æ“ä½œ 
+        System.out.println("ä¹˜æ³•æ“ä½œï¼š" + bi2.multiply(bi1)) ;   // ä¹˜æ³•æ“ä½œ 
+        System.out.println("é™¤æ³•æ“ä½œï¼š" + bi2.divide(bi1)) ; // é™¤æ³•æ“ä½œ 
+        System.out.println("æœ€å¤§æ•°ï¼š" + bi2.max(bi1)) ;  // æ±‚å‡ºæœ€å¤§æ•° 
+        System.out.println("æœ€å°æ•°ï¼š" + bi2.min(bi1)) ;  // æ±‚å‡ºæœ€å°æ•° 
+        BigInteger result[] = bi2.divideAndRemainder(bi1) ; // æ±‚å‡ºä½™æ•°çš„é™¤æ³•æ“ä½œ 
+        System.out.println("å•†æ˜¯ï¼š" + result[0] +  
+            "ï¼›ä½™æ•°æ˜¯ï¼š" + result[1]) ; 
     } 
 }; 
-Ö´ĞĞ½á¹û£º
-¼Ó·¨²Ù×÷£º1111111110 
-¼õ·¨²Ù×÷£º864197532 
-³Ë·¨²Ù×÷£º121932631112635269 
-³ı·¨²Ù×÷£º8 
-×î´óÊı£º987654321 
-×îĞ¡Êı£º123456789 
-ÉÌÊÇ£º8£»ÓàÊıÊÇ£º9 
-2¡¢BigDecimal£ºÕë¶Ô´óµÄ¸¡µãÊı£¬ ÊÇÒÔ×Ö·û´®µÄ·½Ê½´«ÈëµÄ
+æ‰§è¡Œç»“æœï¼š
+åŠ æ³•æ“ä½œï¼š1111111110 
+å‡æ³•æ“ä½œï¼š864197532 
+ä¹˜æ³•æ“ä½œï¼š121932631112635269 
+é™¤æ³•æ“ä½œï¼š8 
+æœ€å¤§æ•°ï¼š987654321 
+æœ€å°æ•°ï¼š123456789 
+å•†æ˜¯ï¼š8ï¼›ä½™æ•°æ˜¯ï¼š9 
+2ã€BigDecimalï¼šé’ˆå¯¹å¤§çš„æµ®ç‚¹æ•°ï¼Œ æ˜¯ä»¥å­—ç¬¦ä¸²çš„æ–¹å¼ä¼ å…¥çš„
 import java.math.* ; 
 class MyMath{ 
-    public static double add(double d1,double d2){      // ½øĞĞ¼Ó·¨¼ÆËã 
+    public static double add(double d1,double d2){      // è¿›è¡ŒåŠ æ³•è®¡ç®— 
         BigDecimal b1 = new BigDecimal(d1) ; 
         BigDecimal b2 = new BigDecimal(d2) ; 
         return b1.add(b2).doubleValue() ; 
     } 
-    public static double sub(double d1,double d2){      // ½øĞĞ¼õ·¨¼ÆËã 
+    public static double sub(double d1,double d2){      // è¿›è¡Œå‡æ³•è®¡ç®— 
         BigDecimal b1 = new BigDecimal(d1) ; 
         BigDecimal b2 = new BigDecimal(d2) ; 
         return b1.subtract(b2).doubleValue() ; 
     } 
-    public static double mul(double d1,double d2){      // ½øĞĞ³Ë·¨¼ÆËã 
+    public static double mul(double d1,double d2){      // è¿›è¡Œä¹˜æ³•è®¡ç®— 
         BigDecimal b1 = new BigDecimal(d1) ; 
         BigDecimal b2 = new BigDecimal(d2) ; 
         return b1.multiply(b2).doubleValue() ; 
     } 
-    public static double div(double d1,double d2,int len){      // ½øĞĞ³Ë·¨¼ÆËã 
+    public static double div(double d1,double d2,int len){      // è¿›è¡Œä¹˜æ³•è®¡ç®— 
         BigDecimal b1 = new BigDecimal(d1) ; 
         BigDecimal b2 = new BigDecimal(d2) ; 
         return b1.divide(b2,len,BigDecimal.ROUND_HALF_UP).doubleValue() ; 
     } 
-    public static double round(double d,int len){   // ½øĞĞËÄÉáÎåÈë 
+    public static double round(double d,int len){   // è¿›è¡Œå››èˆäº”å…¥ 
         BigDecimal b1 = new BigDecimal(d) ; 
         BigDecimal b2 = new BigDecimal(1) ; 
         return b1.divide(b2,len,BigDecimal.ROUND_HALF_UP).doubleValue() ; 
@@ -55,15 +55,15 @@ class MyMath{
  
 public class BigDecimalDemo01{ 
     public static void main(String args[]){ 
-        System.out.println("¼Ó·¨ÔËËã£º" + MyMath.round(MyMath.add(10.345,3.333),1)) ; 
-        System.out.println("¼õ·¨ÔËËã£º" + MyMath.round(MyMath.sub(10.345,3.333),3)) ; 
-        System.out.println("³Ë·¨ÔËËã£º" + MyMath.round(MyMath.mul(10.345,3.333),2)) ; 
-        System.out.println("³ı·¨ÔËËã£º" + MyMath.div(10.345,3.333,3)) ; 
+        System.out.println("åŠ æ³•è¿ç®—ï¼š" + MyMath.round(MyMath.add(10.345,3.333),1)) ; 
+        System.out.println("å‡æ³•è¿ç®—ï¼š" + MyMath.round(MyMath.sub(10.345,3.333),3)) ; 
+        System.out.println("ä¹˜æ³•è¿ç®—ï¼š" + MyMath.round(MyMath.mul(10.345,3.333),2)) ; 
+        System.out.println("é™¤æ³•è¿ç®—ï¼š" + MyMath.div(10.345,3.333,3)) ; 
     } 
 }; 
-Ö´ĞĞ½á¹û£º
-¼Ó·¨ÔËËã£º13.7 
-¼õ·¨ÔËËã£º7.012 
-³Ë·¨ÔËËã£º34.48 
-³ı·¨ÔËËã£º3.104 
-×Ü½á£ºÕë¶Ô´óÊıÒÔ×Ö·û´®µÄ·½Ê½´«ÈË£¬ÔÙÀûÓÃÌá¹©µÄ¼Ó¼õ³Ë³ı·½·¨À´²Ù×÷Êı¾İ£¬¶ø²»ÊÇÒÔ'+ - * /'À´²Ù×÷Êı¾İ
+æ‰§è¡Œç»“æœï¼š
+åŠ æ³•è¿ç®—ï¼š13.7 
+å‡æ³•è¿ç®—ï¼š7.012 
+ä¹˜æ³•è¿ç®—ï¼š34.48 
+é™¤æ³•è¿ç®—ï¼š3.104 
+æ€»ç»“ï¼šé’ˆå¯¹å¤§æ•°ä»¥å­—ç¬¦ä¸²çš„æ–¹å¼ä¼ äººï¼Œå†åˆ©ç”¨æä¾›çš„åŠ å‡ä¹˜é™¤æ–¹æ³•æ¥æ“ä½œæ•°æ®ï¼Œè€Œä¸æ˜¯ä»¥'+ - * /'æ¥æ“ä½œæ•°æ®

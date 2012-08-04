@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Clairewd’s message</title>
+
+  <description>
+    <![CDATA[
+             略。
+    ]]>
+  </description>
+
+  <source>
+    <judge>hdu/4300</judge>
+    <contest>Others/2012/2012 Multi-University Training Contest 1/A</contest>
+  </source>
+
+  <tags>
+    <tag>KMP</tag>
+    <tag>扩展KMP</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               略。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

@@ -23,12 +23,12 @@ point intersection(point u1,point u2,point v1,point v2){
 	return ret;
 }
 
-//ÅĞÖ±ÏßºÍÔ²Ïà½»,°üÀ¨ÏàÇĞ
+//åˆ¤ç›´çº¿å’Œåœ†ç›¸äº¤,åŒ…æ‹¬ç›¸åˆ‡
 int intersect_line_circle(point c,double r,point l1,point l2){
 	return disptoline(c,l1,l2)<r+eps;
 }
 
-//ÅĞÏß¶ÎºÍÔ²Ïà½»,°üÀ¨¶ËµãºÍÏàÇĞ
+//åˆ¤çº¿æ®µå’Œåœ†ç›¸äº¤,åŒ…æ‹¬ç«¯ç‚¹å’Œç›¸åˆ‡
 int intersect_seg_circle(point c,double r,point l1,point l2){
 	double t1=distance(c,l1)-r,t2=distance(c,l2)-r;
 	point t=c;
@@ -39,12 +39,12 @@ int intersect_seg_circle(point c,double r,point l1,point l2){
 	return xmult(l1,c,t)*xmult(l2,c,t)<eps&&disptoline(c,l1,l2)-r<eps;
 }
 
-//ÅĞÔ²ºÍÔ²Ïà½»,°üÀ¨ÏàÇĞ
+//åˆ¤åœ†å’Œåœ†ç›¸äº¤,åŒ…æ‹¬ç›¸åˆ‡
 int intersect_circle_circle(point c1,double r1,point c2,double r2){
 	return distance(c1,c2)<r1+r2+eps&&distance(c1,c2)>fabs(r1-r2)-eps;
 }
 
-//¼ÆËãÔ²ÉÏµ½µãp×î½üµã,ÈçpÓëÔ²ĞÄÖØºÏ,·µ»Øp±¾Éí
+//è®¡ç®—åœ†ä¸Šåˆ°ç‚¹pæœ€è¿‘ç‚¹,å¦‚pä¸åœ†å¿ƒé‡åˆ,è¿”å›pæœ¬èº«
 point dot_to_circle(point c,double r,point p){
 	point u,v;
 	if (distance(p,c)<eps)
@@ -56,8 +56,8 @@ point dot_to_circle(point c,double r,point p){
 	return distance(u,p)<distance(v,p)?u:v;
 }
 
-//¼ÆËãÖ±ÏßÓëÔ²µÄ½»µã,±£Ö¤Ö±ÏßÓëÔ²ÓĞ½»µã
-//¼ÆËãÏß¶ÎÓëÔ²µÄ½»µã¿ÉÓÃÕâ¸öº¯ÊıºóÅĞµãÊÇ·ñÔÚÏß¶ÎÉÏ
+//è®¡ç®—ç›´çº¿ä¸åœ†çš„äº¤ç‚¹,ä¿è¯ç›´çº¿ä¸åœ†æœ‰äº¤ç‚¹
+//è®¡ç®—çº¿æ®µä¸åœ†çš„äº¤ç‚¹å¯ç”¨è¿™ä¸ªå‡½æ•°ååˆ¤ç‚¹æ˜¯å¦åœ¨çº¿æ®µä¸Š
 void intersection_line_circle(point c,double r,point l1,point l2,point& p1,point& p2){
 	point p=c;
 	double t;
@@ -71,7 +71,7 @@ void intersection_line_circle(point c,double r,point l1,point l2,point& p1,point
 	p2.y=p.y-(l2.y-l1.y)*t;
 }
 
-//¼ÆËãÔ²ÓëÔ²µÄ½»µã,±£Ö¤Ô²ÓëÔ²ÓĞ½»µã,Ô²ĞÄ²»ÖØºÏ
+//è®¡ç®—åœ†ä¸åœ†çš„äº¤ç‚¹,ä¿è¯åœ†ä¸åœ†æœ‰äº¤ç‚¹,åœ†å¿ƒä¸é‡åˆ
 void intersection_circle_circle(point c1,double r1,point c2,double r2,point& p1,point& p2){
 	point u,v;
 	double t;

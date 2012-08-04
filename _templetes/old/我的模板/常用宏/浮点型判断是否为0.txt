@@ -1,2 +1,0 @@
-#define eps 1e-8
-#define zero(x) (((x)>0?(x):-(x))<eps)

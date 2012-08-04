@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Treasure Hunt I</title>
+
+  <description>
+    <![CDATA[
+             略。
+    ]]>
+  </description>
+
+  <source>
+    <judge>zoj/3626</judge>
+    <contest>Others/2012/ZOJ Monthly, July 2012/E</contest>
+  </source>
+
+  <tags>
+    <tag>dp</tag>
+    <tag>背包</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               0-1背包。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>
