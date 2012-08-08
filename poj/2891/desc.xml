@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Strange Way to Express Integers</title>
+
+  <description>
+    <![CDATA[
+    ]]>
+  </description>
+
+  <source>
+    <judge>/home/n4k0master/acm/poj/2891</judge>
+    <contest>NONE</contest>
+  </source>
+
+  <tags>
+    <tag>数论</tag>
+    <tag>中国剩余非互质</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

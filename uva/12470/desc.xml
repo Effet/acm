@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Tribonacci</title>
+
+  <description>
+    <![CDATA[
+    ]]>
+  </description>
+
+  <source>
+    <judge>/home/n4k0master/acm/uva/12470</judge>
+    <contest>/home/n4k0master/acm/_contests/Others/2012/Colombian Collegiate Programming League 2012/J</contest>
+  </source>
+
+  <tags>
+    <tag>矩阵连乘</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

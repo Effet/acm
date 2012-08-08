@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>猪的安家</title>
+
+  <description>
+    <![CDATA[
+    ]]>
+  </description>
+
+  <source>
+    <judge>/home/n4k0master/acm/fzu/1402</judge>
+    <contest>NONE</contest>
+  </source>
+
+  <tags>
+    <tag>数论</tag>
+    <tag>中国剩余</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>

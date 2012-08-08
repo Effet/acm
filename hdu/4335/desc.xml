@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>What is N?</title>
+
+  <description>
+    <![CDATA[
+             略。
+    ]]>
+  </description>
+
+  <source>
+    <judge>/home/n4k0master/acm/hdu/4335</judge>
+    <contest>/home/n4k0master/acm/_contests/Others/2012/2012 Multi-University Training Contest 4/E</contest>
+  </source>
+
+  <tags>
+    <tag>数论</tag>
+    <tag>循环节</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+               略。
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>
