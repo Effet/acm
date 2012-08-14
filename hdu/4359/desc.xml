@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<problem>
+  <title>Easy Tree DP?</title>
+
+  <description>
+    <![CDATA[
+    ]]>
+  </description>
+
+  <source>
+    <judge>/home/n4k0master/acm/hdu/4359</judge>
+    <contest>/home/n4k0master/acm/_contests/Others/2012/2012 Multi-University Training Contest 6/J</contest>
+  </source>
+
+  <tags>
+    <tag>dp</tag>
+    <tag>组合数学</tag>
+  </tags>
+
+  <solutions>
+    <solution type="0">
+      <![CDATA[
+      ]]>
+    </solution>
+  </solutions>
+  
+  <!-- <codes> -->
+  <!--   <code langurage="c++"> -->
+  <!--     <![CDATA[ -->
+  <!--     ]]> -->
+  <!--   </code> -->
+  <!-- </codes> -->
+</problem>
