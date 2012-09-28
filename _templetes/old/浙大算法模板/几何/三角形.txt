@@ -15,7 +15,7 @@ point intersection(line u,line v){
 	return ret;
 }
 
-//ÍâĞÄ
+//å¤–å¿ƒ
 point circumcenter(point a,point b,point c){
 	line u,v;
 	u.a.x=(a.x+b.x)/2;
@@ -29,7 +29,7 @@ point circumcenter(point a,point b,point c){
 	return intersection(u,v);
 }
 
-//ÄÚĞÄ
+//å†…å¿ƒ
 point incenter(point a,point b,point c){
 	line u,v;
 	double m,n;
@@ -46,7 +46,7 @@ point incenter(point a,point b,point c){
 	return intersection(u,v);
 }
 
-//´¹ĞÄ
+//å‚å¿ƒ
 point perpencenter(point a,point b,point c){
 	line u,v;
 	u.a=c;
@@ -58,9 +58,9 @@ point perpencenter(point a,point b,point c){
 	return intersection(u,v);
 }
 
-//ÖØĞÄ
-//µ½Èı½ÇĞÎÈı¶¥µã¾àÀëµÄÆ½·½ºÍ×îĞ¡µÄµã
-//Èı½ÇĞÎÄÚµ½Èı±ß¾àÀëÖ®»ı×î´óµÄµã
+//é‡å¿ƒ
+//åˆ°ä¸‰è§’å½¢ä¸‰é¡¶ç‚¹è·ç¦»çš„å¹³æ–¹å’Œæœ€å°çš„ç‚¹
+//ä¸‰è§’å½¢å†…åˆ°ä¸‰è¾¹è·ç¦»ä¹‹ç§¯æœ€å¤§çš„ç‚¹
 point barycenter(point a,point b,point c){
 	line u,v;
 	u.a.x=(a.x+b.x)/2;
@@ -72,8 +72,8 @@ point barycenter(point a,point b,point c){
 	return intersection(u,v);
 }
 
-//·ÑÂíµã
-//µ½Èı½ÇĞÎÈı¶¥µã¾àÀëÖ®ºÍ×îĞ¡µÄµã
+//è´¹é©¬ç‚¹
+//åˆ°ä¸‰è§’å½¢ä¸‰é¡¶ç‚¹è·ç¦»ä¹‹å’Œæœ€å°çš„ç‚¹
 point fermentpoint(point a,point b,point c){
 	point u,v;
 	double step=fabs(a.x)+fabs(a.y)+fabs(b.x)+fabs(b.y)+fabs(c.x)+fabs(c.y);

@@ -12,7 +12,7 @@ double xmult(point p1,point p2,point p0){
 	return (p1.x-p0.x)*(p2.y-p0.y)-(p2.x-p0.x)*(p1.y-p0.y);
 }
 
-//ÅĞ¶¨Í¹¶à±ßĞÎ,¶¥µã°´Ë³Ê±Õë»òÄæÊ±Õë¸ø³ö,ÔÊĞíÏàÁÚ±ß¹²Ïß
+//åˆ¤å®šå‡¸å¤šè¾¹å½¢,é¡¶ç‚¹æŒ‰é¡ºæ—¶é’ˆæˆ–é€†æ—¶é’ˆç»™å‡º,å…è®¸ç›¸é‚»è¾¹å…±çº¿
 int is_convex(int n,point* p){
 	int i,s[3]={1,1,1};
 	for (i=0;i<n&&s[1]|s[2];i++)
@@ -20,7 +20,7 @@ int is_convex(int n,point* p){
 	return s[1]|s[2];
 }
 
-//ÅĞ¶¨Í¹¶à±ßĞÎ,¶¥µã°´Ë³Ê±Õë»òÄæÊ±Õë¸ø³ö,²»ÔÊĞíÏàÁÚ±ß¹²Ïß
+//åˆ¤å®šå‡¸å¤šè¾¹å½¢,é¡¶ç‚¹æŒ‰é¡ºæ—¶é’ˆæˆ–é€†æ—¶é’ˆç»™å‡º,ä¸å…è®¸ç›¸é‚»è¾¹å…±çº¿
 int is_convex_v2(int n,point* p){
 	int i,s[3]={1,1,1};
 	for (i=0;i<n&&s[0]&&s[1]|s[2];i++)
@@ -28,7 +28,7 @@ int is_convex_v2(int n,point* p){
 	return s[0]&&s[1]|s[2];
 }
 
-//ÅĞµãÔÚÍ¹¶à±ßĞÎÄÚ»ò¶à±ßĞÎ±ßÉÏ,¶¥µã°´Ë³Ê±Õë»òÄæÊ±Õë¸ø³ö
+//åˆ¤ç‚¹åœ¨å‡¸å¤šè¾¹å½¢å†…æˆ–å¤šè¾¹å½¢è¾¹ä¸Š,é¡¶ç‚¹æŒ‰é¡ºæ—¶é’ˆæˆ–é€†æ—¶é’ˆç»™å‡º
 int inside_convex(point q,int n,point* p){
 	int i,s[3]={1,1,1};
 	for (i=0;i<n&&s[1]|s[2];i++)
@@ -36,7 +36,7 @@ int inside_convex(point q,int n,point* p){
 	return s[1]|s[2];
 }
 
-//ÅĞµãÔÚÍ¹¶à±ßĞÎÄÚ,¶¥µã°´Ë³Ê±Õë»òÄæÊ±Õë¸ø³ö,ÔÚ¶à±ßĞÎ±ßÉÏ·µ»Ø0
+//åˆ¤ç‚¹åœ¨å‡¸å¤šè¾¹å½¢å†…,é¡¶ç‚¹æŒ‰é¡ºæ—¶é’ˆæˆ–é€†æ—¶é’ˆç»™å‡º,åœ¨å¤šè¾¹å½¢è¾¹ä¸Šè¿”å›0
 int inside_convex_v2(point q,int n,point* p){
 	int i,s[3]={1,1,1};
 	for (i=0;i<n&&s[0]&&s[1]|s[2];i++)
@@ -44,8 +44,8 @@ int inside_convex_v2(point q,int n,point* p){
 	return s[0]&&s[1]|s[2];
 }
 
-//ÅĞµãÔÚÈÎÒâ¶à±ßĞÎÄÚ,¶¥µã°´Ë³Ê±Õë»òÄæÊ±Õë¸ø³ö
-//on_edge±íÊ¾µãÔÚ¶à±ßĞÎ±ßÉÏÊ±µÄ·µ»ØÖµ,offsetÎª¶à±ßĞÎ×ø±êÉÏÏŞ
+//åˆ¤ç‚¹åœ¨ä»»æ„å¤šè¾¹å½¢å†…,é¡¶ç‚¹æŒ‰é¡ºæ—¶é’ˆæˆ–é€†æ—¶é’ˆç»™å‡º
+//on_edgeè¡¨ç¤ºç‚¹åœ¨å¤šè¾¹å½¢è¾¹ä¸Šæ—¶çš„è¿”å›å€¼,offsetä¸ºå¤šè¾¹å½¢åæ ‡ä¸Šé™
 int inside_polygon(point q,int n,point* p,int on_edge=1){
 	point q2;
 	int i=0,count;
@@ -68,7 +68,7 @@ inline int dot_online_in(point p,point l1,point l2){
 	return zero(xmult(p,l1,l2))&&(l1.x-p.x)*(l2.x-p.x)<eps&&(l1.y-p.y)*(l2.y-p.y)<eps;
 }
 
-//ÅĞÏß¶ÎÔÚÈÎÒâ¶à±ßĞÎÄÚ,¶¥µã°´Ë³Ê±Õë»òÄæÊ±Õë¸ø³ö,Óë±ß½çÏà½»·µ»Ø1
+//åˆ¤çº¿æ®µåœ¨ä»»æ„å¤šè¾¹å½¢å†…,é¡¶ç‚¹æŒ‰é¡ºæ—¶é’ˆæˆ–é€†æ—¶é’ˆç»™å‡º,ä¸è¾¹ç•Œç›¸äº¤è¿”å›1
 int inside_polygon(point l1,point l2,int n,point* p){
 	point t[MAXN],tt;
 	int i,j,k=0;
@@ -113,7 +113,7 @@ point barycenter(point a,point b,point c){
 	return intersection(u,v);
 }
 
-//¶à±ßĞÎÖØĞÄ
+//å¤šè¾¹å½¢é‡å¿ƒ
 point barycenter(int n,point* p){
 	point ret,t;
 	double t1=0,t2;

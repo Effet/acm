@@ -1,5 +1,5 @@
-//¶à±ßÐÎÇÐ¸î
-//¿ÉÓÃÓÚ°ëÆ½Ãæ½»
+//å¤šè¾¹å½¢åˆ‡å‰²
+//å¯ç”¨äºŽåŠå¹³é¢äº¤
 #define MAXN 100
 #define eps 1e-8
 #define zero(x) (((x)>0?(x):-(x))<eps)
@@ -22,7 +22,7 @@ point intersection(point u1,point u2,point v1,point v2){
 	return ret;
 }
 
-//½«¶à±ßÐÎÑØl1,l2È·¶¨µÄÖ±ÏßÇÐ¸îÔÚside²àÇÐ¸î,±£Ö¤l1,l2,side²»¹²Ïß
+//å°†å¤šè¾¹å½¢æ²¿l1,l2ç¡®å®šçš„ç›´çº¿åˆ‡å‰²åœ¨sideä¾§åˆ‡å‰²,ä¿è¯l1,l2,sideä¸å…±çº¿
 void polygon_cut(int& n,point* p,point l1,point l2,point side){
 	point pp[100];
 	int m=0,i;

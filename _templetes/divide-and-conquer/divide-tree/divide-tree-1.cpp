@@ -65,20 +65,20 @@ int query(int L, int R, int k, int l, int r, int d = 0)
     int left1 = (L > l ? toLeft[d][L-1] : 0); // Count to the left in [l, L-1].
     int left2 = toLeft[d][R] - left1;         // Count to the left in [L, R].
     
-	if(left2 >= k)              // K-th number in left-son of [L, R].
+    if(left2 >= k)              // K-th number in left-son of [L, R].
     {
-		int newl = l + left1;
-		int newr = l + left1 + left2 - 1;
-		return query(newl, newr, k, l, mid, d+1);
-	}
+        int newl = l + left1;
+        int newr = l + left1 + left2 - 1;
+        return query(newl, newr, k, l, mid, d+1);
+    }
     else
     {
-		int right1 = L - l - left1;     // Count to the right in [l, L-1].
-		int right2 = R - L + 1 - left2; // Count to the right in [L, R].
-		int newl = mid + right1 + 1;
-		int newr = mid + right1 + right2;
-		return query(newl, newr, k-left2, mid+1, r, d+1);
-	}
+        int right1 = L - l - left1;     // Count to the right in [l, L-1].
+        int right2 = R - L + 1 - left2; // Count to the right in [L, R].
+        int newl = mid + right1 + 1;
+        int newr = mid + right1 + right2;
+        return query(newl, newr, k-left2, mid+1, r, d+1);
+    }
 }
 
 
