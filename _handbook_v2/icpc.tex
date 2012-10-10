@@ -1,0 +1,70 @@
+\documentclass[
+landscape,
+a4paper, 11pt,
+hidelinks,
+smallheadings, twoside, twocolumn
+]{article}
+
+\usepackage{geometry}           % 页边距
+\geometry{left=2em,right=2em,top=4em,bottom=4em}
+
+% \usepackage{enumerate}
+\usepackage[fleqn]{amsmath}     % 公式左对齐
+\usepackage{tikz}
+% \usepackage{url}
+\usepackage{hyperref}           % 链接
+\usepackage{cite}               % 引用
+\usepackage{xeCJK}
+\setmonofont{Inconsolata}
+\setCJKmainfont{WenQuanYi Micro Hei}
+\setCJKmonofont{WenQuanYi Micro Hei} % 设置缺省中文字体
+\parindent 2em   %段首缩进
+
+
+% 页眉设置
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+% \pagestyle{fancy}
+% \lhead{}\chead{}
+% \rhead{\small\thepage/\pageref{LastPage}}
+% \lfoot{}\rfoot{}\cfoot{}
+
+\pagestyle{fancy}
+\fancyhead[RO,LE]{\small\slshape\thepage/\pageref{LastPage}}
+\fancyhead[LO,RE]{\small\slshape Catl Sing's ACM/ICPC Templete}
+\fancyfoot{}
+
+
+% 代码高亮
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  basicstyle=\ttfamily\tiny,
+  % basicstyle=\ttfamily\small,
+  % numbers=left,numberstyle=\tiny,
+  xleftmargin=1em,
+  keywordstyle=\color{blue!70},
+  commentstyle=\color{red!50!green!50!blue!50},
+  frame=single,
+  rulesepcolor=\color{red!20!green!20!blue!20},
+  breaklines=true,
+}
+
+
+% 文档开始
+\begin{document} \small
+
+% \include{title} % 标题
+
+% 设置目录
+\tableofcontents
+\newpage
+
+
+% \include{comb} % 组合数学
+\include{geo}  % 计算几何
+
+% \bibliographystyle{plain}
+% \bibliography{icpc}
+
+\end{document}
