@@ -46,6 +46,6 @@ vector<Point> convex_hull(vector<Point> P)
 		H[k++] = P[i];
 	}
  
-	H.resize(k);
+	H.resize(k - 1);
 	return H;
 }
