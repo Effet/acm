@@ -202,6 +202,8 @@ public:
     
     // tangent(切线) of two circle
     // return -1 mean inf tangents
+    // http://www.regentsprep.org/Regents/math/geometry/GP14/TanCircles.htm
+    //   -- to see more
     int tangent(Circle c, Line *l) {
         // concentric and same radii, has inf tangents
         if (sig((o - c.o).len()) == 0 && sig(r - c.r) == 0) return -1;
