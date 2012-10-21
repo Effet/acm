@@ -9,7 +9,7 @@ using namespace std;
 
 typedef double DB;
 
-const DB EPS = 1e-8, PI = acos(-1.0), TAU = 2*PI, INF = 1e99;
+const DB EPS=1e-8, PI=acos(-1.0), TAU=2*PI, INF=1e99;
 
 int sig(DB x) {return x < -EPS ? -1 : x > EPS ? 1 : 0;}
 template<class T> T pow2(T x) {return x * x;}

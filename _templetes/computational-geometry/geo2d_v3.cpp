@@ -91,34 +91,34 @@ DB dis_li_li(LI l1, LI l2) {
 
 
 // point-line
-bool intersect_p_li(PT p, LI l) {
+bool is_p_li(PT p, LI l) {
     // angle is zero
     return sig(cross(p, l.a, l.b)) == 0;
 }
 // point-segment
-bool intersect_p_seg(PT p, LI s, bool border = false) {
+bool is_p_seg(PT p, LI s, bool border = false) {
     // x > -1 means x >= 0)
     return sig(cross(p, s.a, s.b)) == 0 // inline
         && sig(dot(s.a, s.b, p)) > (border?-1:0) // right of p1
         && sig(dot(s.b, s.a, p)) > (border?-1:0); // left of p2
 }
 // segment-line
-bool intersect_seg_li(LI s, LI l, bool border = false) {
+bool is_seg_li(LI s, LI l, bool border = false) {
     return sig(cross(l.a, l.b, s.a)
                 * cross(l.a, l.b, s.b)) > (border?-1:0);
 }
-bool intersect_seg_seg(LI s1, LI s2, bool border = false) {
+bool is_seg_seg(LI s1, LI s2, bool border = false) {
     if (border && parallel(s1, s2)) // inline
-        return intersect_p_seg(s1.a, s2, true)
-            || intersect_p_seg(s1.b, s2, true)
-            || intersect_p_seg(s2.a, s1, true)
-            || intersect_p_seg(s2.b, s1, true);
+        return is_p_seg(s1.a, s2, true)
+            || is_p_seg(s1.b, s2, true)
+            || is_p_seg(s2.a, s1, true)
+            || is_p_seg(s2.b, s1, true);
 
-    return intersect_seg_li(s1, s2, border) &&
-        intersect_seg_li(s2, s1, border);
+    return is_seg_li(s1, s2, border) &&
+        is_seg_li(s2, s1, border);
 }
 DB dis_seg_seg(LI s1, LI s2) {
-    if (intersect_seg_seg(s1, s2, true)) return .0;
+    if (is_seg_seg(s1, s2, true)) return .0;
     return min(
         min(dis_p_seg(s1.a, s2),
             dis_p_seg(s1.b, s2)),
@@ -269,6 +269,22 @@ DB polygon_area(PG P) {
     return fabs(r) / 2;
 }
 
+// convex hull O(nlogn)
+bool cmp_lex(PT a, PT b) {
+    return !sig(a.x-b.x)? a.y<b.y : a.x<b.x;
+}
+void convex_hull(PT *p, int &n) {
+    PT *r=new PT();
+    int i,t,k = 0;
+    std::sort(p, p+n, cmp_lex);
+    for (i=0; i<n; r[k++]=p[i++])
+        while (k>=2&&cross(r[k-2],r[k-1],p[i])<=0) k--;
+    for (i=n-2,t=k+1; i>=0; i--)
+        while (k>=t&&cross(r[k-2],r[k-1],p[i])<=0) k--;
+    for (delete r,n=k-1,i=0; i<n; i++)
+        p[i] = r[i];
+}
+
 // The minimum distance between two convex polygons,
 //   using rotating calipers.
 // p, q must be convex-hull and have same ccw or cw(?)
@@ -302,9 +318,27 @@ bool inside_hull(PT *p, int n, PT p1) {
         else if (d < 0) r = m;
         else l = m;
     }
-    if (r-l > 1) return (m-l>1) && intersect_p_seg(p1, LI(p[l], p[m]));
+    if (r-l > 1) return (m-l>1) && is_p_seg(p1, LI(p[l], p[m]));
     return sig(cross(p[l], p[r], p1)) > 0;
 }
+
+// Cut Convex Hull O(n)
+// left of L.a -> L.b
+// TODO:test
+void convex_cut(PT *p, int &n, LI L) {
+    PT r[1001], v=L.b-L.a;
+    int rcnt=0, d, i;
+    for (p[n]=p[0], i=0; i<n; i++) {
+        if ((d=sig(cross(L.a,L.b,p[i]))) >= 0)
+            r[rcnt++] = p[i];
+        if (d*sig(cross(L.a,L.b,p[i+1])) < 0)
+            r[rcnt++] = cross_li_li(L, LI(p[i], p[i+1]));
+    }
+    for (n=rcnt,i=0; i<n; i++)
+        p[i] = r[i];
+}
+
+
 
 // ///////////////////////////////////////////////////////////////////////////
 // Circle Section
@@ -368,6 +402,7 @@ struct CR {
     // return -1 mean inf tangents
     // http://www.regentsprep.org/Regents/math/geometry/GP14/TanCircles.htm
     //   -- to see more
+    // TODO:test
     int tangent(CR c, LI *l) {
         // concentric and same radii, has inf tangents
         if (sig((o - c.o).len()) == 0 && sig(r - c.r) == 0) return -1;
@@ -421,10 +456,10 @@ DB segment_area(DB r, DB th) {
 }
 
 
-bool intersect_cir_li(CR c, LI l, bool border = false) {
+bool is_cir_li(CR c, LI l, bool border = false) {
     return sig(dis_p_li(c.o, l) - c.r) < (border?-1:0);
 }
-bool intersect_cir_seg(CR c, LI s, bool border = true) {
+bool is_cir_seg(CR c, LI s, bool border = true) {
     int d1 = sig((c.o - s.a).len() - c.r), d2 = sig((c.o - s.b).len() - c.r);
     if (d1 <= 0 && d2 <= 0)
         return border && (d1 == 0 || d2 == 0);
@@ -497,7 +532,7 @@ DB area_cir_tri(CR c, LI s) {
 }
 // common area of circle(c.o, c.r) and simple polyson(p[])
 //  (ccw or cw is ok)
-DB area_cir_polygon(CR c, PG p) {
+DB area_cir_poly(CR c, PG p) {
     DB res = .0;
     int n = p.size();
     for (int i = 0; i < n; ++ i)
