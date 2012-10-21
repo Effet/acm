@@ -148,23 +148,6 @@ DB area_triangle(DB a, DB b, DB c){
 	return sqrt(s*(s-a)*(s-b)*(s-c));
 }
 
-
-struct point{double x,y;};
-struct line{point a,b;};
-
-double dist(point p1,point p2){
-	return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
-}
-
-point intersection(line u,line v){
-	point ret=u.a;
-	double t=((u.a.x-v.a.x)*(v.a.y-v.b.y)-(u.a.y-v.a.y)*(v.a.x-v.b.x))
-        /((u.a.x-u.b.x)*(v.a.y-v.b.y)-(u.a.y-u.b.y)*(v.a.x-v.b.x));
-	ret.x+=(u.b.x-u.a.x)*t;
-	ret.y+=(u.b.y-u.a.y)*t;
-	return ret;
-}
-
 // Circumscribed circle(外心)
 PT circumcenter(PT a, PT b, PT c) {
     PT ab=(a+b)/2, ac=(a+c)/2, ba=(b-a).R(0,1), ca=(c-a).R(0,1);
@@ -181,59 +164,56 @@ PT circumcenter_1(PT a, PT b, PT c){
 }
 
 // Inscribed circle(内心)
-point incenter(point a,point b,point c){
-	line u,v;
-	double m,n;
-	u.a=a;
-	m=atan2(b.y-a.y,b.x-a.x);
-	n=atan2(c.y-a.y,c.x-a.x);
-	u.b.x=u.a.x+cos((m+n)/2);
-	u.b.y=u.a.y+sin((m+n)/2);
-	v.a=b;
-	m=atan2(a.y-b.y,a.x-b.x);
-	n=atan2(c.y-b.y,c.x-b.x);
-	v.b.x=v.a.x+cos((m+n)/2);
-	v.b.y=v.a.y+sin((m+n)/2);
-	return intersection(u,v);
+PT incenter(PT a, PT b, PT c) {
+    DB t1 = ((b-c).ang() + (a-c).ang())/2;
+    DB t2 = ((c-a).ang() + (b-a).ang())/2;
+    return cross_li_li(LI(c, c+PT(cos(t1), sin(t1))),
+                       LI(a, a+PT(cos(t2), sin(t2))));
+    // return cross_li_li(LI(c, (a-c).R(((b-c).ang() - (a-c).ang())/2) + c),
+    //                    LI(a, (b-a).R(((c-a).ang() - (b-a).ang())/2) + a));
 }
 
-//垂心
-point perpencenter(point a,point b,point c){
-	line u,v;
-	u.a=c;
-	u.b.x=u.a.x-a.y+b.y;
-	u.b.y=u.a.y+a.x-b.x;
-	v.a=b;
-	v.b.x=v.a.x-a.y+c.y;
-	v.b.y=v.a.y+a.x-c.x;
-	return intersection(u,v);
+// Altitude (高线/垂心)
+PT perpencenter(PT a, PT b, PT c) {
+    return cross_li_li(LI(c, c+(b-a).R(0,1)),
+                       LI(a, a+(c-b).R(0,1)));
 }
 
 // Barycenter(重心)
-//到三角形三顶点距离的平方和最小的点
-//三角形内到三边距离之积最大的点
+// 到三角形三顶点距离的平方和最小的点
+// 三角形内到三边距离之积最大的点
 PT barycenter(PT a, PT b, PT c) {
     return cross_li_li(LI((a+b)/2, c), LI((a+c)/2, b));
 }
 
-//费马点
-//到三角形三顶点距离之和最小的点
-point fermentpoint(point a,point b,point c){
-	point u,v;
-	double step=fabs(a.x)+fabs(a.y)+fabs(b.x)+fabs(b.y)+fabs(c.x)+fabs(c.y);
-	int i,j,k;
-	u.x=(a.x+b.x+c.x)/3;
-	u.y=(a.y+b.y+c.y)/3;
-	while (step>1e-10)
-		for (k=0;k<10;step/=2,k++)
-			for (i=-1;i<=1;i++)
-				for (j=-1;j<=1;j++){
-					v.x=u.x+step*i;
-					v.y=u.y+step*j;
-					if (dist(u,a)+dist(u,b)+dist(u,c)>dist(v,a)+dist(v,b)+dist(v,c))
-						u=v;
-				}
-	return u;
+// Equilateral triangle(等边三角形)
+LI get_equil(PT a, PT b, PT c) {
+    PT v=(b-a)*(sqrt(3.0)/2), m=(a+b)/2;
+    return LI(c, m + (cross(a, b, c)>0 ? v.L(0,1): v.R(0,1)));
+}
+// 模拟退火算法参看 polygon 部分
+PT fermat_point(PT a, PT b, PT c) {
+    DB A = (b-c).len(), B = (a-c).len(), C = (a-b).len();
+    // make edge C is largest, A is smallest
+    if (B > C) swap(b, c), swap(B, C);
+    if (A > C) swap(a, c), swap(A, C);
+    // if (A > B) swap(a, b), swap(A, B);
+
+    if (dot(c, a, b)/A/B <= -0.5)
+        return c;
+    
+    return cross_li_li(get_equil(a, b, c),
+                       get_equil(b, c, a));
+}
+DB fermat_dis(DB a, DB b, DB c) {
+    if (a > c) swap(a, c);
+    if (b > c) swap(b, c);
+    if ((a*a + b*b - c*c) / (2*a*b) <= -0.5)
+        return a+b;
+    else {
+        DB p = (a+b+c)/2, s = sqrt(s*(s-a)*(s-b)*(s-c));
+        return sqrt((a*a+b*b+c*c + 4*sqrt(3.0)*s)/2);
+    }
 }
 
 
@@ -252,6 +232,32 @@ PT barycenter(PG P) {
         r += t;
     }
     return c / (3 * r);
+}
+
+// Fermat point(费马点)
+// total distance to every point is minimal.
+DB all_dis(PT *p, int n, PT f) {
+    DB r = 0;
+    for (int i = 0; i < n; i++)
+        r += (f-p[i]).len();
+    return r;
+}
+PT fermat_point(PT *p, int n) {
+	PT f(0,0), t;
+    DB step = 0;
+    for (int i = 0; i < n; i++)
+        step+=fabs(p[i].x)+fabs(p[i].y), f=f+p[i];
+    f = f/n;
+	while (step > 1e-10) {
+        for (int i = -1; i <= 1; i++)
+            for (int j = -1; j <= 1; j++) {
+                PT t = f + PT(i,j)*step;
+                if (all_dis(p,n,t) < all_dis(p,n,f))
+                    f = t;
+            }
+        step /= 2;
+    }
+	return f;
 }
 
 // area of polygon (ccw or cw is ok)
@@ -286,7 +292,19 @@ DB dis_poly2_poly(PT *p, PT *q, int n, int m) {
     return r;
 }
 
-
+// TODO:test
+bool inside_hull(PT *p, int n, PT p1) {
+    int l = 0, r = n-1, m;
+    while (r-l > 1) {
+        m = (l+r)>>1;
+        int d = sig(cross(p[l], p[m], p1));
+        if (d == 0) break;
+        else if (d < 0) r = m;
+        else l = m;
+    }
+    if (r-l > 1) return (m-l>1) && intersect_p_seg(p1, LI(p[l], p[m]));
+    return sig(cross(p[l], p[r], p1)) > 0;
+}
 
 // ///////////////////////////////////////////////////////////////////////////
 // Circle Section
