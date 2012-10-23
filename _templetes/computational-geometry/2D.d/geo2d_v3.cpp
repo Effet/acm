@@ -17,13 +17,13 @@ struct PT {
     PT(DB x=0, DB y=0): x(x), y(y) {}
 
     PT operator -() {return PT(-x, -y);}
-    PT operator +(PT v) {return PT(x+v.x, y+v.y);}
-    PT operator -(PT v) {return PT(x-v.x, y-v.y);}
+    PT operator +(PT p) {return PT(x+p.x, y+p.y);}
+    PT operator -(PT p) {return PT(x-p.x, y-p.y);}
     PT operator *(DB s) {return PT(x * s, y * s);}
     PT operator /(DB s) {return PT(x / s, y / s);}
 
-    DB operator *(PT v) {return x*v.x + y*v.y;}
-    DB operator ^(PT v) {return x*v.y - y*v.x;}
+    DB operator *(PT p) {return x*p.x + y*p.y;}
+    DB operator ^(PT p) {return x*p.y - y*p.x;}
 
     // rotate vector (Right/Left hand)
     PT R(DB co, DB si) {return PT(x*co-y*si, y*co+x*si);}
@@ -37,8 +37,8 @@ struct PT {
     PT e(DB s=1) {return *this / len() * s;}
 };
 // dot & cross product
-DB   dot(PT o, PT a, PT b) {return (a-o)*(b-o);}
-DB cross(PT o, PT a, PT b) {return (a-o)^(b-o);}
+DB dot(PT o, PT a, PT b) {return (a-o)*(b-o);}
+DB crs(PT o, PT a, PT b) {return (a-o)^(b-o);}
 
 
 struct LI {
@@ -46,10 +46,10 @@ struct LI {
     LI(PT a, PT b): a(a), b(b) {}
 };
 
-bool parallel(LI l1, LI l2) {
+bool is_para(LI l1, LI l2) {
     return sig((l1.a-l1.b) ^ (l2.a-l2.b)) == 0;
 }
-bool perpendicular(LI l1, LI l2) {
+bool is_perp(LI l1, LI l2) {
     return sig((l1.a-l1.b) * (l2.a-l2.b)) == 0;
 }
 
@@ -74,7 +74,7 @@ PT reflect(PT p, LI l) {
 // distance from point to line
 DB dis_p_li(PT p, LI l) {
     // dis(high) = area / bottom
-    return fabs(cross(l.a, l.b, p)) / (l.a - l.b).len();
+    return fabs(crs(l.a, l.b, p)) / (l.a - l.b).len();
 }
 // distance from point to segment
 DB dis_p_seg(PT p, LI s) {
@@ -86,29 +86,29 @@ DB dis_p_seg(PT p, LI s) {
 // distance between two line
 DB dis_li_li(LI l1, LI l2) {
     // if two line is cross, distance is 0
-    return !parallel(l1, l2) ? .0 : dis_p_li(l1.a, l2);
+    return !is_para(l1, l2) ? .0 : dis_p_li(l1.a, l2);
 }
 
 
 // point-line
 bool is_p_li(PT p, LI l) {
     // angle is zero
-    return sig(cross(p, l.a, l.b)) == 0;
+    return sig(crs(p, l.a, l.b)) == 0;
 }
 // point-segment
 bool is_p_seg(PT p, LI s, bool border = false) {
     // x > -1 means x >= 0)
-    return sig(cross(p, s.a, s.b)) == 0 // inline
+    return sig(crs(p, s.a, s.b)) == 0 // inline
         && sig(dot(s.a, s.b, p)) > (border?-1:0) // right of p1
         && sig(dot(s.b, s.a, p)) > (border?-1:0); // left of p2
 }
 // segment-line
 bool is_seg_li(LI s, LI l, bool border = false) {
-    return sig(cross(l.a, l.b, s.a)
-                * cross(l.a, l.b, s.b)) > (border?-1:0);
+    return sig(crs(l.a, l.b, s.a)
+               * crs(l.a, l.b, s.b)) > (border?-1:0);
 }
 bool is_seg_seg(LI s1, LI s2, bool border = false) {
-    if (border && parallel(s1, s2)) // inline
+    if (border && is_para(s1, s2)) // inline
         return is_p_seg(s1.a, s2, true)
             || is_p_seg(s1.b, s2, true)
             || is_p_seg(s2.a, s1, true)
@@ -128,7 +128,7 @@ DB dis_seg_seg(LI s1, LI s2) {
 }
 
 // cross point of two line
-PT cross_li_li(LI l1, LI l2) { // ensure not rarallel
+PT crs_li_li(LI l1, LI l2) { // ensure not rarallel
     return l1.a +
         (l1.b-l1.a) * (((l1.a-l2.b) ^ (l2.a-l2.b)) /
                        ((l1.a-l1.b) ^ (l2.a-l2.b)));
@@ -141,7 +141,7 @@ PT cross_li_li(LI l1, LI l2) { // ensure not rarallel
 // ///////////////////////////////////////////////////////////////////////////
 
 DB area_triangle(PT p1, PT p2, PT p3) {
-	return fabs(cross(p1,p2,p3)) / 2;
+	return fabs(crs(p1,p2,p3)) / 2;
 }
 DB area_triangle(DB a, DB b, DB c){
 	DB s=(a+b+c)/2;
@@ -151,7 +151,7 @@ DB area_triangle(DB a, DB b, DB c){
 // Circumscribed circle(外心)
 PT circumcenter(PT a, PT b, PT c) {
     PT ab=(a+b)/2, ac=(a+c)/2, ba=(b-a).R(0,1), ca=(c-a).R(0,1);
-    return cross_li_li(LI(ab,ab+ba), LI(ac,ac+ca));
+    return crs_li_li(LI(ab,ab+ba), LI(ac,ac+ca));
 }
 PT circumcenter_1(PT a, PT b, PT c){
     PT ret;
@@ -167,29 +167,29 @@ PT circumcenter_1(PT a, PT b, PT c){
 PT incenter(PT a, PT b, PT c) {
     DB t1 = ((b-c).ang() + (a-c).ang())/2;
     DB t2 = ((c-a).ang() + (b-a).ang())/2;
-    return cross_li_li(LI(c, c+PT(cos(t1), sin(t1))),
-                       LI(a, a+PT(cos(t2), sin(t2))));
-    // return cross_li_li(LI(c, (a-c).R(((b-c).ang() - (a-c).ang())/2) + c),
-    //                    LI(a, (b-a).R(((c-a).ang() - (b-a).ang())/2) + a));
+    return crs_li_li(LI(c, c+PT(cos(t1), sin(t1))),
+                     LI(a, a+PT(cos(t2), sin(t2))));
+    // return crs_li_li(LI(c, (a-c).R(((b-c).ang() - (a-c).ang())/2) + c),
+    //                  LI(a, (b-a).R(((c-a).ang() - (b-a).ang())/2) + a));
 }
 
 // Altitude (高线/垂心)
 PT perpencenter(PT a, PT b, PT c) {
-    return cross_li_li(LI(c, c+(b-a).R(0,1)),
-                       LI(a, a+(c-b).R(0,1)));
+    return crs_li_li(LI(c, c+(b-a).R(0,1)),
+                     LI(a, a+(c-b).R(0,1)));
 }
 
 // Barycenter(重心)
 // 到三角形三顶点距离的平方和最小的点
 // 三角形内到三边距离之积最大的点
 PT barycenter(PT a, PT b, PT c) {
-    return cross_li_li(LI((a+b)/2, c), LI((a+c)/2, b));
+    return crs_li_li(LI((a+b)/2, c), LI((a+c)/2, b));
 }
 
 // Equilateral triangle(等边三角形)
 LI get_equil(PT a, PT b, PT c) {
     PT v=(b-a)*(sqrt(3.0)/2), m=(a+b)/2;
-    return LI(c, m + (cross(a, b, c)>0 ? v.L(0,1): v.R(0,1)));
+    return LI(c, m + (crs(a, b, c)>0 ? v.L(0,1): v.R(0,1)));
 }
 // 模拟退火算法参看 polygon 部分
 PT fermat_point(PT a, PT b, PT c) {
@@ -201,9 +201,9 @@ PT fermat_point(PT a, PT b, PT c) {
 
     if (dot(c, a, b)/A/B <= -0.5)
         return c;
-    
-    return cross_li_li(get_equil(a, b, c),
-                       get_equil(b, c, a));
+
+    return crs_li_li(get_equil(a, b, c),
+                     get_equil(b, c, a));
 }
 DB fermat_dis(DB a, DB b, DB c) {
     if (a > c) swap(a, c);
@@ -221,14 +221,13 @@ DB fermat_dis(DB a, DB b, DB c) {
 // Polygon Section
 // ///////////////////////////////////////////////////////////////////////////
 
-typedef vector<PT> PG;
 
 // barycenter of polygon (ccw or cw is ok)
-PT barycenter(PG P) {
+PT barycenter(PT *p, int n) {
     PT c(0, 0); DB r = 0, t; // t is sum of area * 2
-    int n = P.size();
+    p[n] = p[0];
     for (int i = 0; i < n; ++ i) {
-        c = c + (P[i] + P[(i+1)%n]) * (t = P[i] ^ P[(i+1)%n]);
+        c = c + (p[i] + p[i+1]) * (t = p[i] ^ p[i+1]);
         r += t;
     }
     return c / (3 * r);
@@ -243,12 +242,12 @@ DB all_dis(PT *p, int n, PT f) {
     return r;
 }
 PT fermat_point(PT *p, int n) {
-	PT f(0,0), t;
+    PT f(0,0), t;
     DB step = 0;
     for (int i = 0; i < n; i++)
         step+=fabs(p[i].x)+fabs(p[i].y), f=f+p[i];
     f = f/n;
-	while (step > 1e-10) {
+    while (step > 1e-10) {
         for (int i = -1; i <= 1; i++)
             for (int j = -1; j <= 1; j++) {
                 PT t = f + PT(i,j)*step;
@@ -257,15 +256,15 @@ PT fermat_point(PT *p, int n) {
             }
         step /= 2;
     }
-	return f;
+    return f;
 }
 
 // area of polygon (ccw or cw is ok)
-DB polygon_area(PG P) {
+DB polygon_area(PT *p, int n) {
     DB r = .0;
-    int n = P.size();
+    p[n] = p[0];
     for (int i = 0; i < n; ++ i)
-        r += (P[i] ^ P[(i+1)%n]);
+        r += (p[i] ^ p[i+1]);
     return fabs(r) / 2;
 }
 
@@ -274,19 +273,20 @@ bool cmp_lex(PT a, PT b) {
     return !sig(a.x-b.x)? a.y<b.y : a.x<b.x;
 }
 void convex_hull(PT *p, int &n) {
-    PT *r=new PT();
+    PT *r=new PT[n<<1];
     int i,t,k = 0;
     std::sort(p, p+n, cmp_lex);
     for (i=0; i<n; r[k++]=p[i++])
-        while (k>=2&&cross(r[k-2],r[k-1],p[i])<=0) k--;
+        while (k>=2&&crs(r[k-2],r[k-1],p[i])<=0) k--;
     for (i=n-2,t=k+1; i>=0; i--)
-        while (k>=t&&cross(r[k-2],r[k-1],p[i])<=0) k--;
+        while (k>=t&&crs(r[k-2],r[k-1],p[i])<=0) k--;
     for (delete r,n=k-1,i=0; i<n; i++)
         p[i] = r[i];
 }
 
 // The minimum distance between two convex polygons,
 //   using rotating calipers.
+// replace min() to max() can calculate maximum distance.
 // p, q must be convex-hull and have same ccw or cw(?)
 DB dis_poly2_poly(PT *p, PT *q, int n, int m) {
     int i = 0, j = 0, tn = n, tm = m;
@@ -313,13 +313,28 @@ bool inside_hull(PT *p, int n, PT p1) {
     int l = 0, r = n-1, m;
     while (r-l > 1) {
         m = (l+r)>>1;
-        int d = sig(cross(p[l], p[m], p1));
+        int d = sig(crs(p[l], p[m], p1));
         if (d == 0) break;
         else if (d < 0) r = m;
         else l = m;
     }
     if (r-l > 1) return (m-l>1) && is_p_seg(p1, LI(p[l], p[m]));
-    return sig(cross(p[l], p[r], p1)) > 0;
+    return sig(crs(p[l], p[r], p1)) > 0;
+}
+
+// check if Point in simple polygon.
+// 1: inside, 0: border, -1: outside
+// TODO:test
+int contains(PT *p, int n, PT p1) {
+    int r = -1, i;
+    for (p[n] = p[0], i = 0; i < n; i++) {
+        PT a=p[i]-p1, b=p[i+1]-p1;
+        if (a.y > b.y) std::swap(a, b);
+        if (sig(a.y)<=0 && sig(b.y)>0 && sig(a^b)>0)
+            r = -r;
+        if (sig(a^b)<=0 && sig(a*b)<=0) return 0;
+    }
+    return r;
 }
 
 // Cut Convex Hull O(n)
@@ -329,10 +344,10 @@ void convex_cut(PT *p, int &n, LI L) {
     PT r[1001], v=L.b-L.a;
     int rcnt=0, d, i;
     for (p[n]=p[0], i=0; i<n; i++) {
-        if ((d=sig(cross(L.a,L.b,p[i]))) >= 0)
+        if ((d=sig(crs(L.a,L.b,p[i]))) >= 0)
             r[rcnt++] = p[i];
-        if (d*sig(cross(L.a,L.b,p[i+1])) < 0)
-            r[rcnt++] = cross_li_li(L, LI(p[i], p[i+1]));
+        if (d*sig(crs(L.a,L.b,p[i+1])) < 0)
+            r[rcnt++] = crs_li_li(L, LI(p[i], p[i+1]));
     }
     for (n=rcnt,i=0; i<n; i++)
         p[i] = r[i];
@@ -362,7 +377,7 @@ struct CR {
 
     // Ensure this->posi(c) = (-1, 1)
     PT touch(CR c) {
-        return (c.o - o).e(r);
+        return (c.o - o).e(r) + o;
     }
 
     // IMPORTANT: Ensure this->posi(c) = 0
@@ -469,7 +484,7 @@ bool is_cir_seg(CR c, LI s, bool border = true) {
 
 // The segment which line intersect with circle
 // Ensure intersect(Circle c, Line l) is true
-LI cross_cir_li(CR c, LI l) {
+LI crs_cir_li(CR c, LI l) {
     PT p = project(c.o, l);
     PT v = l.a - l.b;
     v = v.e() * sqrt(pow2(c.r) - (c.o - p).len2());
@@ -522,19 +537,19 @@ DB area_cir_tri(CR c, LI s) {
 
     // triangle
     if (sig(disoa - c.r) <= 0 && sig(disob - c.r) <= 0)
-        return cross(c.o, s.a, s.b) / 2.0;
+        return crs(c.o, s.a, s.b) / 2.0;
 
     // three part: (A, a) (a, b) (b, B)
-    LI rs = cross_cir_li(c, s);
+    LI rs = crs_cir_li(c, s);
     return area_cir_tri(c, LI(s.a, rs.a))
         + area_cir_tri(c, LI(rs.a, rs.b))
         + area_cir_tri(c, LI(rs.b, s.b));
 }
 // common area of circle(c.o, c.r) and simple polyson(p[])
 //  (ccw or cw is ok)
-DB area_cir_poly(CR c, PG p) {
+DB area_cir_poly(CR c, PT *p, int n) {
     DB res = .0;
-    int n = p.size();
+    p[n] = p[0];
     for (int i = 0; i < n; ++ i)
         res += area_cir_tri(c, LI(p[i], p[(i+1)%n]));
     return fabs(res);

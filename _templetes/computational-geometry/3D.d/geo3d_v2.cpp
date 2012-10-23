@@ -24,75 +24,104 @@ struct PT {
     PT operator *(DB s) {return PT(x*s, y*s, z*s);}
     PT operator /(DB s) {return PT(x/s, y/s, z/s);}
 
-    PT operator ^(PT v) {return PT(y*v.z-z*v.y, z*v.x-x*v.z, x*v.y-y*v.x);}
-    DB operator *(PT v) {return x*v.x + y*v.y + z*v.z;}
-
-    bool operator <(const PT  &p) const {
-        if (sig(x-p.x) == 0)
-            return !sig(y-p.y) ? z<p.z : y<p.y;
-        return sig(x-p.x) < 0;
-    }
+    PT operator ^(PT p) {return PT(y*p.z-z*p.y, z*p.x-x*p.z, x*p.y-y*p.x);}
+    DB operator *(PT p) {return x*p.x + y*p.y + z*p.z;}
 
     DB len2() {return x*x + y*y + z*z;}
     DB len() {return sqrt(len2());}
-    PT e() {return *this / len();}
-
-    bool      parallel(PT v) {return sig((*this^v).len()) == 0;}
-    bool perpendicular(PT v) {return sig(*this*v) == 0;}
-
-    void   get()   {cin >> x >> y >> z;}
-    void print()   {cout << x << " " << y << " " << z << endl;}
+    PT e(DB s) {return *this / (len()*s);}
 };
 
 struct LI {
     PT a, b;
-    LI(){}
     LI(PT a, PT b) : a(a), b(b) {}
-
-    // 点到直线/直线到直线距离
-    DB    dis_to_p(PT p) {return ((p-a)^(b-a)).len()/(b-a).len();}
-    DB dis_to_line(LI  l) {PT n = (b-a)^(l.b-l.a); return fabs((b-a)*n)/n.len();}
-
-    // 保证点不在线上
-    bool     same_side(PT p1, PT p2) {return sig(((b-a)^(p1-a)) * ((b-a)^(p2-a))) > 0;}
-    bool opposite_side(PT p1, PT p2) {return sig(((b-a)^(p1-a)) * ((b-a)^(p2-a))) < 0;}
-
-    bool      parallel(LI l) {return (b-a).parallel(l.b-l.a);}
-    bool perpendicular(LI l) {return (b-a).perpendicular(l.b-l.a);}
-
-    // 直线与直线交点，须先判断共面不平行
-    PT intersection(LI l) {return a + (b-a) * (((a-l.a)^(l.a-l.b)).len()/((a-b)^(l.a-l.b)).len());}
-
-    void get() {a.get(); b.get();}
 };
+
+bool is_para(LI l1, LI l2) {
+    return sig(((l1.b-l1.a)^(l2.b-l2.a)).len()) == 0;
+}
+bool is_perp(LI l1, LI l2) {
+    return sig((l1.b-l1.a)*(l2.b-l2.a)) == 0;
+}
+
+
+// ///////////////////////////////////////////////////////////////////////////
+// Point/Line/Segment Section
+// ///////////////////////////////////////////////////////////////////////////
+
+
+DB dis_p_li(PT p, LI l) {
+    return ((p-l.a)^(l.b-l.a)).len() / (l.b-l.a).len();}
+}
+DB dis_li_li(LI l1, LI l2) {
+    PT n = (l1.b-l1.a)^(l2.b-l2.a);
+    return fabs((l1.b-l1.a)*n) / n.len();
+}
+
+bool is_p_li(PT p, LI l) {
+    ;
+}
+bool is_li_li(PT l1, PT l2) {
+    ;
+}
+
+bool crs_li_li(LI l1, LI l2) {
+    // PT intersection(LI l) {return a + (b-a) * (((a-l.a)^(l.a-l.b)).len()/((a-b)^(l.a-l.b)).len());};
+}
+
+
+// ///////////////////////////////////////////////////////////////////////////
+// Plane Section
+// ///////////////////////////////////////////////////////////////////////////
 
 
 struct PL {
     PT  a, b, c;
-    PL(){}
     PL(PT a, PT b, PT c) : a(a), b(b), c(c) {}
 
-    // 法向量
     PT normal() {return (b - a) ^ (c - a);}
 
-    DB    dis_to_p(PT p) {return fabs(normal()*(p - a)) / normal().len();}
-    bool     same_side(PT p1, PT p2) {return sig(normal()*(p1-a) * (normal()*(p2-a))) > 0;}
+    // DB    dis_to_p(PT p) {return fabs(normal()*(p - a)) / normal().len();}
+    // bool     same_side(PT p1, PT p2) {return sig(normal()*(p1-a) * (normal()*(p2-a))) > 0;}
 
-    // 平面与直线 平行/垂直
-    bool      parallel(LI  l) {return sig(normal()*(l.b-l.a)) == 0;}
-    bool perpendicular(LI  l) {return sig((normal()^(l.b-l.a)).len()) == 0;}
+    // // 平面与直线 平行/垂直
+    // bool      parallel(LI  l) {return sig(normal()*(l.b-l.a)) == 0;}
+    // bool perpendicular(LI  l) {return sig((normal()^(l.b-l.a)).len()) == 0;}
 
-    // 平面与平面 平行/垂直
-    bool      parallel(PL p) {return normal().parallel(p.normal());}
-    bool perpendicular(PL p) {return normal().perpendicular(p.normal());}
+    // // 平面与平面 平行/垂直
+    // bool      parallel(PL p) {return normal().parallel(p.normal());}
+    // bool perpendicular(PL p) {return normal().perpendicular(p.normal());}
 
     // 须先判断不平行
-    PT intersection(LI  l) {return l.a + (l.b-l.a) * (((normal()*(a-l.a)))/((normal()*(l.b-l.a))));}
-    LI  intersection(PL p) {
-        return LI(parallel(LI(p.a,p.b)) ? intersection(LI(p.b,p.c)) : intersection(LI(p.a,p.b)),
-                    parallel(LI(p.c,p.a)) ? intersection(LI(p.b,p.c)) : intersection(LI(p.c,p.a)));
-    }
+    // PT intersection(LI  l) {return l.a + (l.b-l.a) * (((normal()*(a-l.a)))/((normal()*(l.b-l.a))));}
+    // LI  intersection(PL p) {
+    //     return LI(parallel(LI(p.a,p.b)) ? intersection(LI(p.b,p.c)) : intersection(LI(p.a,p.b)),
+    //                 parallel(LI(p.c,p.a)) ? intersection(LI(p.b,p.c)) : intersection(LI(p.c,p.a)));
+    // }
 };
+
+bool is_para(LI l, PL pe) {
+    return sig(pe.normal()*(l.b-l.a)) == 0;
+}
+bool is_perp(LI l, PL pe) {
+    return sig((pe.normal()^(l.b-l.a)).len()) == 0;
+}
+bool is_para(PL pe1, PL pe2) {
+    PT n1 = pe1.normal(), n2 = pe2.normal();
+    return sig(((n1.b-n1.a)^(n2.b-n2.a)).len()) == 0;
+}
+bool is_perp(PL pe1, PL pe2) {
+    PT n1 = pe1.normal(), n2 = pe2.normal();
+    return sig((n1.b-n1.a)*(n2.b-n2.a)) == 0;
+}
+
+
+DB dis_p_ple(PT p, PL pe) {}
+
+PT crs_li_ple(LI l, PL pe) {}
+LI crs_ple_ple(PL pe1, PL pe2) {}
+
+
 
 
 const int MAX_L = 4; // 3D
