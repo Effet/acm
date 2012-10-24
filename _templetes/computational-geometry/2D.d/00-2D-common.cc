@@ -1,6 +1,3 @@
-#ifndef 2D
-#define 2D
-
 #include <vector>
 #include <complex>
 #include <assert.h>
@@ -37,5 +34,3 @@ int ccw(PT a, PT b, PT c) {
     if (norm(b) < norm(c)) return -2;       // a--b--c on line
     return 0;
 }
-
-#endif

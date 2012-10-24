@@ -1,5 +1,3 @@
-#include "../2D.cc"
-
 PT crsLL(LI l, LI m) {
     DB A = crs(l[1]-l[0], m[1]-m[0]);
     DB B = crs(l[1]-l[0], l[1]-m[0]);

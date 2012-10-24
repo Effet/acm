@@ -1,5 +1,3 @@
-#include "../2D.cc"
-
 DB disLP(LI l, PT p) {
     // dis(high) = area / bottom
     return fabs(crs(l[0]-p,l[1]-p)) / abs(l[0]-l[1]);

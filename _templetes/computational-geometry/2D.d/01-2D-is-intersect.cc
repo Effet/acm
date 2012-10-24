@@ -1,5 +1,3 @@
-#include "../2D.cc"
-
 bool is_para(LI j, LI k) {return !sig(crs(j[0]-j[1], k[0]-k[1]));}
 bool is_perp(LI j, LI k) {return !sig(dot(j[0]-j[1], k[0]-k[1]));}
 

@@ -1,7 +1,3 @@
-#include "2D.cc"
-#include "2D-POINT-LINE.d/check.cc"
-#include "2D-POINT-LINE.d/distance.cc"
-
 DB area_triangle(PT p1, PT p2, PT p3) {
 	return fabs(crs(p2-p1,p3-p1)) / 2;
 }
@@ -74,10 +70,4 @@ DB fermat_dis(DB a, DB b, DB c) {
         DB p = (a+b+c)/2, s = sqrt(s*(s-a)*(s-b)*(s-c));
         return sqrt((a*a+b*b+c*c + 4*sqrt(3.0)*s)/2);
     }
-}
-
-int main(int argc, char *argv[])
-{
-    
-    return 0;
 }

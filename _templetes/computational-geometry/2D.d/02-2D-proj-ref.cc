@@ -1,5 +1,3 @@
-#include "../2D.cc"
-
 // Nearest point in line
 PT project(PT p, LI l) {
     DB t = dot(p-l[0], l[1]-l[0]) / norm(l[1]-l[0]);
