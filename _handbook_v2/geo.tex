@@ -1,58 +1,75 @@
-% \newcommand{name}[num][defaultA, defaultB]{definitions}
-% \newcommand{istCode}{\lstinputlisting[language=C++]{code/computational-geometry/geo2d_v2.cpp}}
+\newcommand{\cgeo}[1]{\lstinputlisting[language=C++]{code/computational-geometry/#1}}
 
 \section{计算几何}
 
 \subsection{二维几何}
-\lstinputlisting[language=C++]{code/computational-geometry/geo2d_v2.cpp}
-% \istCode
+\subsubsection{基本函数}
+\cgeo{2D.d/00-2D-common.cc}
+\subsubsection{判相交}
+\cgeo{2D.d/01-2D-is-intersect.cc}
+\subsubsection{点在线上投影(project)/对称点(reflect)}
+\cgeo{2D.d/02-2D-proj-ref.cc}
+\subsubsection{点点/点线/线段……各种距离}
+\cgeo{2D.d/03-2D-distance.cc}
+\subsubsection{直线交点}
+\cgeo{2D.d/04-2D-cross-line.cc}
+\subsubsection{各种三角形}
+\cgeo{2D.d/05-2D-triangle.cc}
+\subsubsection{多边形}
+\cgeo{2D.d/06-2D-polygon.cc}
+\subsubsection{圆}
+\cgeo{2D.d/07-2D-circle.cc}
+
 \subsection{三维几何}
 \subsubsection{新版本}
-\lstinputlisting[language=C++]{code/computational-geometry/geo3d_v2.cpp}
-\subsubsection{旧用版本}
-\lstinputlisting[language=C++]{code/computational-geometry/geo3d.cpp}
+\cgeo{3D.d/geo3d_v2.1.cpp}
+% \subsubsection{新版本}
+% \cgeo{3D.d/geo3d_v2.cpp}
+% \subsubsection{旧用版本}
+\cgeo{3D.d/geo3d.cpp}
 
 \subsection{凸包}
 \subsubsection{二维单调链}
-\lstinputlisting[language=C++]{code/computational-geometry/convex-hull/Monotone_Chain_Convex.cpp}
+\cgeo{convex-hull/Monotone_Chain_Convex.cpp}
 \subsubsection{三维凸包}
-\lstinputlisting[language=C++]{code/computational-geometry/convex-hull/ch3d-tmp.cpp}
+\cgeo{convex-hull/ch3d-tmp.cpp}
+
 
 \subsection{圆并/交}
 \subsubsection{SPOJ/CIRU,VCIRCLES}
 多圆面积并的面积
-\lstinputlisting[language=C++]{code/computational-geometry/area/circle-circle/SPOJ-CIRU-VCIRCLES.CC}
+\cgeo{2D.d/undering/circle-union/SPOJ-CIRU-VCIRCLES.cc}
 \subsubsection{SPOJ/CIRUT}
 扩展圆并，求交了k次的面积
-\lstinputlisting[language=C++]{code/computational-geometry/area/circle-circle/SPOJ-CIRUT.CC}
+\cgeo{2D.d/undering/circle-union/SPOJ-CIRUT.cc}
 \subsubsection{SGU/435}
 求交了奇数次和偶数次的面积
-\lstinputlisting[language=C++]{code/computational-geometry/area/circle-circle/SGU-435.CC}
+\cgeo{2D.d/undering/circle-union/SGU-435.cc}
 \subsubsection{CII/4492,HDU/3239}
 求圆并减去圆交，trick:要去除相同的圆
 然后求去除相同圆后k个圆的交
-\lstinputlisting[language=C++]{code/computational-geometry/area/circle-circle/CII-4492-HDU-3239.CC}
+\cgeo{2D.d/undering/circle-union/CII-4492-HDU-3239.cc}
 \subsubsection{CII/4530}
 求最多几个圆相交于一块区域，以及区域的块数
-\lstinputlisting[language=C++]{code/computational-geometry/area/circle-circle/CII-4530.CC}
+\cgeo{2D.d/undering/circle-union/CII-4530.cc}
 
 \subsection{圆与线}
 \subsubsection{HDU/4116}
 求平面一直线最多能交几个圆。
 
 推论：最优直线可为某一圆切线。
-\lstinputlisting[language=C++]{code/computational-geometry/line-cut-circle/HDU-4116.CC}
+\cgeo{2D.d/undering/HDU-4116-line-cut-circle.cc}
 
 \subsection{圆凸包}
 \subsubsection{CII/6012}
 多圆求凸包，计算任意两圆不相交切线的四个切点，将所有点做凸包即可。
-\lstinputlisting[language=C++]{code/computational-geometry/circle-convex/CII-6012.CC}
+\cgeo{2D.d/undering/CII-6012-circle-convex.cc}
 
 \subsection{圆环区间统计}
 \subsubsection{POJ/4048}
 由一起点发射的射线最多交多少线段
-\lstinputlisting[language=C++]{code/computational-geometry/line-cut-segment/POJ-4048.CC}
+\cgeo{2D.d/undering/POJ-4048-line-cut-segment.cc}
 
 \subsection{圆与多边形交}
 \subsubsection{POJ/2986,3675,ZOJ/2675,HDU/4404}
-\lstinputlisting[language=C++]{code/computational-geometry/area/circle-polygon-area.cpp}
+\cgeo{2D.d/undering/circle-polygon-area.cpp}

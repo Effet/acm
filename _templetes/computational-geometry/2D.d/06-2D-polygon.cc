@@ -54,12 +54,13 @@ void convex_hull(PT *p, int &n) {
     std::sort(p, p+n, cmp_lex);
     for (i=0; i<n; r[k++]=p[i++])
         while (k>=2&&ccw(r[k-2],r[k-1],p[i])<=0) k--;
-    for (i=n-2,t=k+1; i>=0; i--)
+    for (i=n-2,t=k+1; i>=0; r[k++]=p[i--])
         while (k>=t&&ccw(r[k-2],r[k-1],p[i])<=0) k--;
     for (delete r,n=k-1,i=0; i<n; i++)
         p[i] = r[i];
 }
 
+// 两凸多边形间最小距离，将min()函数改为max()为求最大距离
 // The minimum distance between two convex polygons,
 //   using rotating calipers.
 // replace min() to max() can calculate maximum distance.
