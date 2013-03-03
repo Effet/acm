@@ -1,9 +1,8 @@
-
 # temp file or unaccepted problem
 *.swp
 *~
 
-[0-9a-zA-Z].cpp
+#[0-9a-zA-Z].cpp
 a
 in
 out
@@ -13,12 +12,3 @@ other
 other.cpp
 tmp
 tmp.cpp
-
-# latex
-*.aux
-*.log
-*.pdf
-*.toc
-*.bbl
-*.blg
-*.brf
