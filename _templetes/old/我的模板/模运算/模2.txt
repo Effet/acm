@@ -1,1 +1,0 @@
-a%b%c is not always -eq to a%c%b
